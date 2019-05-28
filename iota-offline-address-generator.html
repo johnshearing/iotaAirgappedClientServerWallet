@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>IOTA Offline Address Generator</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <script src="js/iota-offline-address-generator.bundle.js"></script>
+
+    <div id="title">
+      <img src="img/iota-offline-icon.png">
+      <span id="titleText">IOTA Offline Address Generator</span>
+      <span id="version">v1.20180924.1015</span>
+    </div>
+
+    <form onsubmit="generateAddresses(); return false;" method="post">
+      
+      <div class="inputArea">
+        <input id="seed" type="text" placeholder="Seed" value=""> // Seed<br>
+        <input id="securityLevel" type="text" placeholder="Security level" value=""> // Security level<br>
+        <input id="numberOfAddresses" type="text" placeholder="Number of addresses" value=""> // Number of addresses<br>
+      </div>
+
+      <div class="actionArea">
+        <button id="generateButton" type="submit()">Generate addresses</button><br>
+      </div>
+
+      <div class="feedbackArea">
+        Status: <span id="generatedAddressesResult">Not yet generated...</span><br>
+        <div id="generatedAddressesDiv"></div>
+      </div>
+
+    </form>
+  </body>
+</html>
