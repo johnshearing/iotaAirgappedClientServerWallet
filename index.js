@@ -1,17 +1,11 @@
-/*
-*
-* Primary file for the API
-*
-*/
-
-// To start node with the default staging configuration just start node with the following command:
+// To start the application with the default staging configuration just start node with the following command:
 // node index.js
 // If using powershell and you wish to run a configuration different than the default staging config then,
 // run the following command in PowerShell before starting node.
-// $env:NODE_ENV="mySpecialConfigurationVariable" 
+// $env:NODE_ENV="mySpecialConfigurationVariableFromTheConfigFile" 
 // Now you can start node with the following as usual:
 // node index.js
-// For other command line interpreters use the following command if you do not want the default staging config.
+// For other command line interpreters such as BASH use the following command if you do not want the default staging config.
 // NODE_ENV=mySpecialConfigurationVariable node index.js
 
 const http = require('http');
@@ -20,6 +14,35 @@ const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
 const fs = require('fs');
+const _data = require('./lib/data');
+const handlers = require('./lib/handlers');
+
+// Testing
+//@TODO Delete this.
+/*
+// Example of creating a file
+_data.create('test', 'newFile', {'foo': 'bar'}, function(err){
+  console.log('This was the error ', err);
+});
+
+// Example of reading a file.
+_data.read('test', 'newFile', function(err, data){
+  console.log('This was the error ', err, ' and this was the data ', data);
+});
+
+// Example of updating a file.
+_data.update('test', 'newFile', {'fizz': 'buzz'}, function(err){
+  console.log('This was the error ', err);
+});
+
+// Example of deleting a file.
+_data.delete('test', 'newFile', function(err){
+  console.log('This was the error ', err);
+});
+
+*/
+
+
 
 // Instantiate the http server.
 var httpServer = http.createServer(function(req, res){
@@ -118,28 +141,11 @@ var unifiedServer = function(req, res){
   });  
 };
 
-// Define the handlers.
-var handlers = {};
 
-// Sample handler
-handlers.sample = function(data, callback){
-  //Callback an http status code and a payload object.
-  callback(406, {'name' : 'sample handler'});
-};
-
-// Ping handler
-handlers.ping = function(data, callback){
-  //Callback an http status code of 200.
-  callback(200);
-};
-
-// Not found handler
-handlers.notFound = function(data, callback){
-  callback(404);
-};
 
 // Define a request router.
 var router = {
   'sample' : handlers.sample,
   'ping' : handlers.ping,
+  'users' : handlers.users,
 };
