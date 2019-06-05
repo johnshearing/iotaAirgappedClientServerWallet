@@ -12,10 +12,11 @@ const http = require('http');
 const https = require('https');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
-const config = require('./config');
+const config = require('./lib/config');
 const fs = require('fs');
 const _data = require('./lib/data');
 const handlers = require('./lib/handlers');
+const helpers = require('./lib/helpers');
 
 // Testing
 //@TODO Delete this.
@@ -96,7 +97,7 @@ var unifiedServer = function(req, res){
   var headers = req.headers;
 
   //Get the payload if there is any.
-  var decoder = new StringDecoder('utf-8');
+  var decoder = new StringDecoder('utf8');
 
   var buffer = '';
   req.on('data', function(data){
@@ -116,7 +117,7 @@ var unifiedServer = function(req, res){
         'queryStringObject' : queryStringObject,
         'method' : method,
         'headers' : headers,
-        'payload' : buffer 
+        'payload' : helpers.parseJsonToObject(buffer) 
     };
 
     // Route the request to the handler specified in the router.
