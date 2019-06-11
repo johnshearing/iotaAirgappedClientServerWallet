@@ -18,30 +18,6 @@ const _data = require('./lib/data');
 const handlers = require('./lib/handlers');
 const helpers = require('./lib/helpers');
 
-// Testing
-//@TODO Delete this.
-/*
-// Example of creating a file
-_data.create('test', 'newFile', {'foo': 'bar'}, function(err){
-  console.log('This was the error ', err);
-});
-
-// Example of reading a file.
-_data.read('test', 'newFile', function(err, data){
-  console.log('This was the error ', err, ' and this was the data ', data);
-});
-
-// Example of updating a file.
-_data.update('test', 'newFile', {'fizz': 'buzz'}, function(err){
-  console.log('This was the error ', err);
-});
-
-// Example of deleting a file.
-_data.delete('test', 'newFile', function(err){
-  console.log('This was the error ', err);
-});
-
-*/
 
 
 
@@ -50,10 +26,16 @@ var httpServer = http.createServer(function(req, res){
   unifiedServer(req, res);
 });
 
+
+
+
 // Start the http server.
 httpServer.listen(config.httpPort, function(){
   console.log('The server is listening on port ' + config.httpPort + ' in ' + config.envName + ' mode.');
 }); 
+
+
+
 
 
 // Instantiate the https server.
@@ -62,9 +44,16 @@ var httpsServerOptions = {
   'cert' : fs.readFileSync('./https/cert.pem')
 };
 
+
+
+
+
 var httpsServer = https.createServer(httpsServerOptions, function(req, res){
   unifiedServer(req, res);
 });
+
+
+
 
 
 // Start the https server.
@@ -78,8 +67,12 @@ httpsServer.listen(config.httpsPort, function(){
 }); 
 
 
+
+
+// Define a function to route requests from the client to the handler and to serve back a response.
 // All the logic for both the http and https server
-var unifiedServer = function(req, res){
+var unifiedServer = function(req, res)
+{
   // Get the URL and parse it.
   var parsedUrl = url.parse(req.url, true);
 
@@ -96,57 +89,108 @@ var unifiedServer = function(req, res){
   // Get the headers as an Object
   var headers = req.headers;
 
-  //Get the payload if there is any.
+  // Instantiate decoder that will turn payload buffer into a string.
   var decoder = new StringDecoder('utf8');
 
+  // Create an empty string for the request payload. 
+  // It's called buffer but it is not a JavaScript buffer (not binary data) - it's just an empty string.
+  // We are going to use it to hold the request payload buffer after it has been decoded and turned into a string.
   var buffer = '';
-  req.on('data', function(data){
+
+
+  // Call to event emitter req.on('data...
+  // Watch for a chunk of data from the client's request payload buffer. 
+  // The run the callback defined below with the returned data.
+  req.on('data', function(data)
+  {
+    // Decode the chunk and write it to the payload string.
     buffer += decoder.write(data);
   });
 
-  req.on('end', function(){
+
+  // Call to event emitter req.on('end...    
+  // Watch for the end of the payload from the client request.
+  // The callback defined here is the action taken after the entire request has been received.
+  req.on('end', function()
+  {
+    // Finish writing to the buffer.
     buffer += decoder.end();
 
-    // Chose the handler this request should go to.
+
+    // Choose the handler the client's request should go to.
     // If one is not found, use the notFound handler.
+    // To be clear: A key in the router object below shoule match the request from the client.
+    // chosenHandler becomes an alias for the handler function which is mapped to the key in the router object.
+    // This is how we can refer to the handler function without knowing what it is in advance.
     var chosenHandler = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : handlers.notFound;
 
+
     // Construct the data object to send to the handler.
-    var data = {
+    var data = 
+    {
         'trimmedPath' : trimmedPath,
         'queryStringObject' : queryStringObject,
         'method' : method,
         'headers' : headers,
         'payload' : helpers.parseJsonToObject(buffer) 
-    };
+    }; // End of: Construct the data object to send to the handler.
 
-    // Route the request to the handler specified in the router.
-    chosenHandler(data, function(statusCode, payload){
+
+    // Call the handler specified by the client.
+    chosenHandler(data, function(statusCode, payload, contentType)
+    {
+      // Determine the type of response - default to json.
+      contentType = typeof(contentType) == 'string' ? contentType : 'json';
 
       // Use the status code called back by the handler, or default to 200.
       statusCode = typeof(statusCode) == 'number' ? statusCode : 200;
 
-      // Use the payload called back by the handler, or default to an empty object.
-      payload = typeof(payload) =='object' ? payload : {};
 
-      // Convert the payload to a string.
-      var payloadString =  JSON.stringify(payload);
+      // Return the response parts that are content specific.
+      var payloadString = '';
 
-      // Return the response.
-      res.setHeader('Content-Type', 'application/json' );
+      if(contentType == 'json')
+      {
+        res.setHeader('Content-Type', 'application/json');    
+
+        // Use the payload called back by the handler, or default to an empty object.
+        payload = typeof(payload) =='object' ? payload : {};     
+        
+        // Convert the payload to a string.
+        payloadString =  JSON.stringify(payload);        
+      }
+
+      if(contentType == 'html')
+      {
+        res.setHeader('Content-Type', 'text/html');       
+        payloadString = typeof(payload) == 'string' ? payload : '';   
+      }      
+
+      // Return the response parts that are common to all content-types.
       res.writeHead(statusCode);
-      res.end(payloadString);
+      res.end(payloadString);      
 
       console.log('Returning this response: ', statusCode, payloadString);      
-    });
-  });  
-};
+    }); // End of: call to chosenHandler(...
+  }); // End of: call to req.on('end', function(...
+}; // End of: var unifiedServer = function(...
+// End of: Define a function to route requests from the client to the handler and to serve back a response.
+
 
 
 
 // Define a request router.
 var router = {
-  'sample' : handlers.sample,
-  'ping' : handlers.ping,
-  'users' : handlers.users,
+  '' : handlers.index,
+  'account/create' : handlers.accountCreate,
+  'account/edit' : handlers.accountEdit,
+  'account/delete' : handlers.accountDeleted,
+  'session/create' : handlers.sessionCreate,
+  'session/delete' : handlers.sessionDeleted,
+  'checks/all': handlers.checkList,
+  'checks/create' : handlers.checksCreate,
+  'checks/edit' : handlers.checksEdit,
+  'api/sample' : handlers.sample,
+  'api/ping' : handlers.ping,
+  'api/users' : handlers.users,
 };
