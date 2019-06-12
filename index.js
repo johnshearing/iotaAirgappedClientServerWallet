@@ -119,7 +119,7 @@ var unifiedServer = function(req, res)
 
     // Choose the handler the client's request should go to.
     // If one is not found, use the notFound handler.
-    // To be clear: A key in the router object below shoule match the request from the client.
+    // To be clear: A key in the router object below should match the request from the client.
     // chosenHandler becomes an alias for the handler function which is mapped to the key in the router object.
     // This is how we can refer to the handler function without knowing what it is in advance.
     var chosenHandler = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : handlers.notFound;
@@ -136,7 +136,8 @@ var unifiedServer = function(req, res)
     }; // End of: Construct the data object to send to the handler.
 
 
-    // Call the handler specified by the client.
+    // Call the handler specified by the client. 
+    // Then execute the callback we are passing in as an argument.
     chosenHandler(data, function(statusCode, payload, contentType)
     {
       // Determine the type of response - default to json.
