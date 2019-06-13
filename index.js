@@ -38,7 +38,7 @@ httpServer.listen(config.httpPort, function(){
 
 
 
-// Instantiate the https server.
+// Specify location of the key and certificate for the https server.
 var httpsServerOptions = {
   'key' : fs.readFileSync('./https/key.pem'),
   'cert' : fs.readFileSync('./https/cert.pem')
@@ -47,7 +47,7 @@ var httpsServerOptions = {
 
 
 
-
+// Instantiate the https server.
 var httpsServer = https.createServer(httpsServerOptions, function(req, res){
   unifiedServer(req, res);
 });
@@ -124,6 +124,13 @@ var unifiedServer = function(req, res)
     // This is how we can refer to the handler function without knowing what it is in advance.
     var chosenHandler = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : handlers.notFound;
 
+    // If the request is within the public directory, use the public handler instead of what was assigned by the line above.
+    // The line below is required because the line above will only match a handler to a client request if
+    //   the request exactly matches one of the keys in the request router object at the bottom of this file. 
+    //   So if the request is "public" then we have a match with the public handler. But request 
+    //   public/app.css would not be matched with a handler.
+    chosenHandler = trimmedPath.indexOf('public/') > -1 ? handlers.public : chosenHandler;
+
 
     // Construct the data object to send to the handler.
     var data = 
@@ -165,13 +172,43 @@ var unifiedServer = function(req, res)
       {
         res.setHeader('Content-Type', 'text/html');       
         payloadString = typeof(payload) == 'string' ? payload : '';   
-      }      
+      }     
+      
+      if(contentType == 'favicon')
+      {
+        res.setHeader('Content-Type', 'image/x-icon');       
+        payloadString = typeof(payload) !== 'undefined' ? payload : '';   
+      }  
+      
+      if(contentType == 'css')
+      {
+        res.setHeader('Content-Type', 'text/css');       
+        payloadString = typeof(payload) !== 'undefined' ? payload : '';   
+      }  
+      
+      if(contentType == 'png')
+      {
+        res.setHeader('Content-Type', 'image/png');       
+        payloadString = typeof(payload) !== 'undefined' ? payload : '';   
+      }  
+      
+      if(contentType == 'jpg')
+      {
+        res.setHeader('Content-Type', 'image/jpeg');       
+        payloadString = typeof(payload) !== 'undefined' ? payload : '';   
+      }  
+      
+      if(contentType == 'plain')
+      {
+        res.setHeader('Content-Type', 'text/plain');       
+        payloadString = typeof(payload) !== 'undefined' ? payload : '';   
+      }        
 
       // Return the response parts that are common to all content-types.
       res.writeHead(statusCode);
       res.end(payloadString);      
 
-      console.log('Returning this response: ', statusCode, payloadString);      
+      console.log('Returning this response: ', statusCode);
     }); // End of: call to chosenHandler(...
   }); // End of: call to req.on('end', function(...
 }; // End of: var unifiedServer = function(...
@@ -194,4 +231,6 @@ var router = {
   'api/sample' : handlers.sample,
   'api/ping' : handlers.ping,
   'api/users' : handlers.users,
+  'favicon.ico' : handlers.favicon,
+  'public' : handlers.public,
 };
