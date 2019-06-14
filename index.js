@@ -229,7 +229,7 @@ var router = {
   'checks/create' : handlers.checksCreate,
   'checks/edit' : handlers.checksEdit,
   'api/sample' : handlers.sample,
-  'api/ping' : handlers.ping,
+  'ping' : handlers.ping,
   'api/users' : handlers.users,
   'favicon.ico' : handlers.favicon,
   'public' : handlers.public,
