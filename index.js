@@ -231,6 +231,7 @@ var router = {
   'api/sample' : handlers.sample,
   'ping' : handlers.ping,
   'api/users' : handlers.users,
+  'api/tokens' : handlers.tokens,
   'favicon.ico' : handlers.favicon,
   'public' : handlers.public,
 };
