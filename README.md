@@ -6,4 +6,10 @@
  Next, run the following command to start the NodeJS server:  
  `node ./index.js`  
  Finally, open your browser and enter the following address:  
- `http://localhost:3000/`
+ `http://localhost:3000/`  
+ 
+ Everything runs but the app does not do anything IOTA related yet.  
+ I am still working on base functionality. 
+ Check back often to follow the progress.  
+ Feel free to make suggestions.  
+ Thanks  
