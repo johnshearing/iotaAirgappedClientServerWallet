@@ -9,7 +9,7 @@
  `http://localhost:3000/`  
  
  Everything runs but the app does not do anything IOTA related yet.  
- I am still working on base functionality. 
+ I am still working on base functionality.  
  Check back often to follow the progress.  
  Feel free to make suggestions.  
  Thanks  
