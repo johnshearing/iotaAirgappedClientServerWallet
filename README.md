@@ -5,5 +5,5 @@
  Then from the command line, cd into the folder where this repository has been cloned.  
  Next, run the following command to start the NodeJS server:  
  `node ./index.js`  
- Finally, open your browser and enter the following address:
+ Finally, open your browser and enter the following address:  
  `http://localhost:3000/`
