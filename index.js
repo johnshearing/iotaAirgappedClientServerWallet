@@ -228,7 +228,6 @@ var router = {
   'checks/all': handlers.checkList,
   'checks/create' : handlers.checksCreate,
   'checks/edit' : handlers.checksEdit,
-  'api/sample' : handlers.sample,
   'ping' : handlers.ping,
   'api/users' : handlers.users,
   'api/tokens' : handlers.tokens,
