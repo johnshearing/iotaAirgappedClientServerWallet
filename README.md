@@ -21,8 +21,7 @@
  * Broadcast Transactions Online,  
  * Handle Mult-Signatures,  
  * MAM Masked Authenticated Messaging,  
- * Interface with Qubic as that becomes available,  
- * Facilitate deployment of smart contracts as the functionality becomes available.  
+ * Implement all the functionality available through Qubic as that comes online,  
  Check back often to follow the progress.  
  Feel free to make suggestions.  
  Thanks, John
