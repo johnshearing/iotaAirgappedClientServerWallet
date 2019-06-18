@@ -3,7 +3,7 @@
  
  To use this code, simply install NodeJS on your device and clone this repository.  
  Then from the command line, cd into the folder where this repository has been cloned.  
- Now clone [IOTA's NodeJS JavaScript library](https://github.com/iotaledger/iota.js) into the current directory
+ Now clone [IOTA's NodeJS JavaScript library](https://github.com/iotaledger/iota.js) into the current directory.  
  Next, run the following command to start the NodeJS server:  
  `node ./index.js`  
  Finally, open your browser and enter the following address:  
