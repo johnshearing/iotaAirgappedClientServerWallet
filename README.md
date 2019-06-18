@@ -8,7 +8,7 @@
  Finally, open your browser and enter the following address:  
  `http://localhost:3000/`  
  
- Everything runs but the app does not do anything IOTA related yet.  
+ The app runs well but it doesn't do anything IOTA related yet.  
  IOTA functionality will be built in very shortly.  
  Right now I am working on getting the framework right.  
  Then building on top of the framework will go quickly.  
