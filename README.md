@@ -12,6 +12,17 @@
  IOTA functionality will be built in very shortly.  
  Right now I am working on getting the framework right.  
  Then building on top of the framework will go quickly.  
+ The wallet will:  
+ * Generate truly random seeds,  
+ * Generate addresses,  
+ * Identify Healthy Nodes,   
+ * Check Balances,   
+ * Bundle Transactions Offline,  
+ * Broadcast Transactions Online,  
+ * Handle Mult-Signatures,  
+ * MAM Masked Authenticated Messaging,  
+ * Interface with Qubic as that becomes available,  
+ * Facilitate deployment of smart contracts as the functionality becomes available.  
  Check back often to follow the progress.  
  Feel free to make suggestions.  
  Thanks, John
