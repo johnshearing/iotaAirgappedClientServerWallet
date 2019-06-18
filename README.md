@@ -20,11 +20,12 @@
  * Identify Healthy Nodes,   
  * Check Balances,   
  * Bundle Transactions Offline,  
- * Broadcast Transactions Online,  
- * Include database functionality,  
+ * Broadcast Transactions Online,   
  * Handle Mult-Signatures,  
  * MAM Masked Authenticated Messaging,  
  * Implement all the functionality available through Qubic as that comes online,  
+ * Include database functionality,  
+ * Implement typical accounting functions such as AP, AR, GL, Inv ...  
  
  Check back often to follow the progress.  
  Feel free to make suggestions.  
