@@ -10,8 +10,8 @@
  
  Everything runs but the app does not do anything IOTA related yet.  
  IOTA functionality will be built in very shortly.  
- Right now I am working on getting the framework right.
- Then building on top of the framework will go quickly.
+ Right now I am working on getting the framework right.  
+ Then building on top of the framework will go quickly.  
  Check back often to follow the progress.  
  Feel free to make suggestions.  
  Thanks, John
