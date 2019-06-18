@@ -16,11 +16,11 @@
  Then building on top of the framework will go quickly.  
  The wallet will:  
  * [Generate truly random seeds](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#generating-seeds-with-a-true-random-number-generator) not pseudo-random,  
- * Generate addresses,  
- * Identify Healthy Nodes,   
- * Check Balances,   
- * Bundle Transactions Offline,  
- * Broadcast Transactions Online,   
+ * [Generate addresses](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-addresses-from-your-seeds-to-store-iotas),  
+ * [Identify Healthy Nodes](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#find-a-healthy-computer-on-the-tangle-to-use-for-checking-the-balance-of-your-new-address),   
+ * [Check Balances](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#check-your-balance-at-address-a0),   
+ * [Bundle Transactions Offline,  
+ * Broadcast Transactions Online,](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-a-signed-transaction-bundle-and-broadcast-it-to-the-tangle)   
  * Handle Mult-Signatures,  
  * MAM Masked Authenticated Messaging,  
  * Implement all the functionality available through Qubic as that comes online,  
