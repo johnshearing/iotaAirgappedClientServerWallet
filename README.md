@@ -20,7 +20,7 @@
  * [Generate addresses and keep track of balances in each address](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-addresses-from-your-seeds-to-store-iotas),  
  * [Identify Healthy Nodes](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#find-a-healthy-computer-on-the-tangle-to-use-for-checking-the-balance-of-your-new-address),   
  * [Check Balances for a single address or for a list of addresses](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#check-your-balance-at-address-a0),   
-   * The wallet will not check balances for a seed for security reasons  
+   * The wallet will not check seed balances for security reasons.  
    * A list of addresses must be supplied. This will all be handled by the database.  
    * Working this way eliminates all confusion created by snap shots.  
  * [Bundle Transactions Offline then Broadcast Transactions Online,](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-a-signed-transaction-bundle-and-broadcast-it-to-the-tangle)   
