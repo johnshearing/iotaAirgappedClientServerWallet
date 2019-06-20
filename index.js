@@ -222,7 +222,7 @@ var router = {
   '' : handlers.index,
   'account/create' : handlers.accountCreate,
   'account/edit' : handlers.accountEdit,
-  'account/delete' : handlers.accountDeleted,
+  'account/deleted' : handlers.accountDeleted,
   'session/create' : handlers.sessionCreate,
   'session/deleted' : handlers.sessionDeleted,
   'checks/all': handlers.checkList,
@@ -231,6 +231,7 @@ var router = {
   'ping' : handlers.ping,
   'api/users' : handlers.users,
   'api/tokens' : handlers.tokens,
+  'api/checks' : handlers.checks,
   'favicon.ico' : handlers.favicon,
   'public' : handlers.public,
 };

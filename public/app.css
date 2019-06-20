@@ -86,7 +86,7 @@ body.loggedIn .header ul li.loggedOut{
 .footer{
   position: fixed;
   left: 0;
-  bottom: 0;  
+  bottom: 0; 
   width: 100%;
   background-color: #1a1a1a;
   padding: 50px 0;
@@ -157,6 +157,19 @@ body.index .blurb{
   background-color: #217844 !important;
 }
 
+.cta.red{
+  background-color: #c83737 !important;
+}
+
+.warning{
+  font-style: italic;
+  color: #c83737;
+  font-size: 17px;
+  text-align: center;
+  line-height: 150%;
+  padding: 0 0 20px 0 ;
+}
+
 /* Form Styling for Account Creation page and others */
 .formWrapper{
   margin: 0 auto;
@@ -178,11 +191,33 @@ body.index .blurb{
   border-style: solid;
 }
 
+.formSuccess{
+  display: none;
+  background-color: #217844;
+  font-style: italic;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 0 0 15px 0;
+  text-align: center;
+  border-color: #35c06d;
+  border-width: 2px;
+  border-style: solid;
+}
+
+hr {
+  margin: 30px 0;
+}
+
 input {
   border-width: 1px;
   border-radius: 2px;
   padding: 7px 1%;
   width: 100%;
+}
+
+input.disabled{
+  background-color: #efefef;
 }
 
 .inputWrapper{
