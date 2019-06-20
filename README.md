@@ -15,8 +15,8 @@
  Right now I am working on getting the framework right.  
  Then building on top of the framework will go quickly.  
  The wallet will:  
+ * [Generate truly random seeds](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#generating-seeds-with-a-true-random-number-generator) (not pseudo-random) with special hardware built into every raspberry pi 2, or use another method if you want.
  * Include multiuser database functionality,  
- * [Generate truly random seeds](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#generating-seeds-with-a-true-random-number-generator) not pseudo-random by virtue of special hardware built into the raspberry pi 2,  
  * [Generate addresses and keep track of balances in each address](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-addresses-from-your-seeds-to-store-iotas),  
  * [Identify Healthy Nodes](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#find-a-healthy-computer-on-the-tangle-to-use-for-checking-the-balance-of-your-new-address),   
  * [Check Balances for a single address or for a list of addresses](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#check-your-balance-at-address-a0),   
