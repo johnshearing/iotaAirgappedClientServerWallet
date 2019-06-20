@@ -15,15 +15,18 @@
  Right now I am working on getting the framework right.  
  Then building on top of the framework will go quickly.  
  The wallet will:  
- * [Generate truly random seeds](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#generating-seeds-with-a-true-random-number-generator) not pseudo-random,  
- * [Generate addresses](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-addresses-from-your-seeds-to-store-iotas),  
+ * Include database functionality,  
+ * [Generate truly random seeds](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#generating-seeds-with-a-true-random-number-generator) not pseudo-random by virtue of special hardware built into the raspberry pi 2,  
+ * [Generate addresses and keep track of balances in each address](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-addresses-from-your-seeds-to-store-iotas),  
  * [Identify Healthy Nodes](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#find-a-healthy-computer-on-the-tangle-to-use-for-checking-the-balance-of-your-new-address),   
- * [Check Balances](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#check-your-balance-at-address-a0),   
+ * [Check Balances for a single address or for a list of addresses](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#check-your-balance-at-address-a0),   
+   * The wallet will not check balances for a seed for security reasons  
+   * A list of addresses must be supplied. This will all be handled by the database.  
+   * Working this way eliminates all confusion created by snap shots.  
  * [Bundle Transactions Offline then Broadcast Transactions Online,](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-a-signed-transaction-bundle-and-broadcast-it-to-the-tangle)   
  * [Handle Mult-Signatures building upon work found here](https://www.mobilefish.com/services/cryptocurrency/iota_multisig.html),  
  * MAM Masked Authenticated Messaging,  
  * Implement all the functionality available through Qubic as that comes online,  
- * Include database functionality,  
  * Implement typical accounting functions such as AP, AR, GL, Inv ...  
  
  Check back often to follow the progress.  
