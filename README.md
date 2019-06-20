@@ -15,7 +15,7 @@
  Right now I am working on getting the framework right.  
  Then building on top of the framework will go quickly.  
  The wallet will:  
- * Include database functionality,  
+ * Include multiuser database functionality,  
  * [Generate truly random seeds](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#generating-seeds-with-a-true-random-number-generator) not pseudo-random by virtue of special hardware built into the raspberry pi 2,  
  * [Generate addresses and keep track of balances in each address](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-addresses-from-your-seeds-to-store-iotas),  
  * [Identify Healthy Nodes](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#find-a-healthy-computer-on-the-tangle-to-use-for-checking-the-balance-of-your-new-address),   
@@ -24,6 +24,7 @@
    * A list of addresses must be supplied. This will all be handled by the database.  
    * Working this way eliminates all confusion created by snap shots.  
  * [Bundle Transactions Offline then Broadcast Transactions Online,](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-a-signed-transaction-bundle-and-broadcast-it-to-the-tangle)   
+   * Users will see a visual representation of what actions the bundle will perform as a check before broadcasting the bundle.  
  * [Handle Mult-Signatures building upon work found here](https://www.mobilefish.com/services/cryptocurrency/iota_multisig.html),  
  * MAM Masked Authenticated Messaging,  
  * Implement all the functionality available through Qubic as that comes online,  
