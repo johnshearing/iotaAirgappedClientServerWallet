@@ -20,7 +20,7 @@
  * [Generate addresses and check balances for a single address or for a list of addresses](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#check-your-balance-at-address-a0),   
    * The wallet does check seed balances for security reasons.  
    * A list of addresses is supplied by the database instead.  
-   * Working this way also eliminates all confusion created by snap shots.  
+   * Working this way also eliminates the confusion created by snap shots.  
  * [Bundle Transactions Offline then Broadcast Transactions Online,](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-a-signed-transaction-bundle-and-broadcast-it-to-the-tangle)   
    * Users will see a visual representation of actions the bundle will perform as check before broadcasting bundle.  
  * [Handle Mult-Signatures building upon work found here](https://www.mobilefish.com/services/cryptocurrency/iota_multisig.html),  
