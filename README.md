@@ -24,7 +24,7 @@
    * A list of addresses must be supplied. This will all be handled by the database.  
    * Working this way eliminates all confusion created by snap shots.  
  * [Bundle Transactions Offline then Broadcast Transactions Online,](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-a-signed-transaction-bundle-and-broadcast-it-to-the-tangle)   
-   * Users will see a visual representation of actions the bundle will perform as a check before broadcasting the bundle.  
+   * Users will see a visual representation of actions the bundle will perform as check before broadcasting bundle.  
  * [Handle Mult-Signatures building upon work found here](https://www.mobilefish.com/services/cryptocurrency/iota_multisig.html),  
  * MAM Masked Authenticated Messaging,  
  * Implement all the functionality available through Qubic as that comes online,  
