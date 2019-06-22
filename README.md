@@ -15,6 +15,14 @@
  Right now I am working on getting the framework right.  
  Then building on top of the framework will go quickly.  
  The wallet will:  
+ * Have database functionality. 
+   * Table locking and/or field locking will be used to make the application multiuser.  
+   * Transaction rollbacks will be implemented if any part of the transaction fails.  
+   * All records/documents in the database (no matter from what table/collection) will get their unique ids from a single incremented source so that every record/document has a system wide unique id that identifies when it was created with respect to all the other records/documents in the database. You will see why in a minute.  
+   * Any adds, changes, or deletes to a record/document will be recorded in a log that captures the entire record/document in it's new state. This along with the system wide unique ids allows the entire database to be reconstructed to represent any point in history.  
+ * Have a code generator.
+   * Rather than writing post, get, put, delete and user interface functions for every table/collection there will be templetes instead that get populated with metadata including all the business rules that make each table/collection unique.
+   * First I am going to write a simple app and test it a bit. Then I will make the templets using the simple app as a model. From that point on, any changes to the app are made in the metadata and the application is regenerated. This way, major changes to functionality ripple down through the system without having to change the handlers for each table/collection and their user interfaces. This eliminates most programming errors and makes it possible to make big changes to the system as we try to figure out what works and what does not.  
  * [Generate truly random seeds](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#generating-seeds-with-a-true-random-number-generator) (not pseudo-random) with special hardware built into every raspberry pi 2, or use another method if you want,
  * [Identify healthy nodes](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#find-a-healthy-computer-on-the-tangle-to-use-for-checking-the-balance-of-your-new-address),   
  * [Generate addresses and check balances for a single address or for a list of addresses](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#check-your-balance-at-address-a0),   
