@@ -32,11 +32,11 @@
    * Working this way also eliminates the confusion created by snap shots.  
  * [Bundle Transactions Offline then Broadcast Transactions Online,](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-a-signed-transaction-bundle-and-broadcast-it-to-the-tangle)   
    * Users will see a visual representation of actions the bundle will perform as check before broadcasting bundle.  
- * [Handle Mult-Signatures building upon work found here](https://www.mobilefish.com/services/cryptocurrency/iota_multisig.html),  
+ * [Handle Multi-Signatures building upon work found here](https://www.mobilefish.com/services/cryptocurrency/iota_multisig.html),  
  * MAM Masked Authenticated Messaging,  
  * Implement all the functionality available through Qubic as that comes online,  
  * Implement typical accounting functions such as AP, AR, GL, Inv ...  
  
  Check back often to follow the progress.  
- Feel free to make suggestions.  
+ Feel free to make suggestions or help with the coding.  
  Thanks, John
