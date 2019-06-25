@@ -2,7 +2,7 @@
 This is the last piece of the puzzle in [The PrivateKeyVault family of repositories](https://github.com/johnshearing).  
 This work in progress is a continuation of tutorial [IOTA-Airgapped-NodeJS-Console-Wallet](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet).  
  
-This wallet being constructed using the methods in the following tutorial:  
+This wallet being constructed using the methods shown in the following tutorial:  
 [The NodeJS Master Class - No Frameworks, No NPM, No Dependencies](https://pirple.thinkific.com/courses/the-nodejs-master-class)  
 No dependencies makes for easy auditing.  
 
