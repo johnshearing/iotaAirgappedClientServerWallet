@@ -9,7 +9,7 @@ No dependencies makes for easy auditing.
 This app runs in the browser using NodeJS Client server architecture.  
 It runs on a single airgapped [PrivateKeyVault](https://github.com/johnshearing/PrivateKeyVault) for individuals or on an airgapped network for large institutions or government. In the alternative, all this code will run on any device that runs NodeJS.  
 
-When this wallet is finished, a video tutorial will be made explaining each line of code so you can write everything from scratch if you want to. This will facilitate and audit.  
+When this wallet is finished, a video tutorial will be made explaining each line of code so you can write everything from scratch if you want to. This will facilitate an audit.  
  
  To use this code, simply install NodeJS on your device and clone this repository.  
  Then from the command line, cd into the folder where this repository has been cloned.  
