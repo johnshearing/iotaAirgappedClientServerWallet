@@ -23,7 +23,7 @@ When this wallet is finished, a video tutorial will be made explaining each line
  The app runs well but it doesn't do anything IOTA related yet.  
  IOTA functionality will be built in very shortly.  
  The focus now is on getting the framework right.  
- Then building on top of the framework will go quickly.  
+ Then building on top of this DIY framework will go quickly.  
  
  The wallet will:  
  * Have database functionality. 
