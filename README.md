@@ -24,6 +24,7 @@ When the wallet is finished, a video tutorial will be made explaining each line 
  IOTA functionality will be built in very shortly.  
  Right now I am working on getting the framework right.  
  Then building on top of the framework will go quickly.  
+ 
  The wallet will:  
  * Have database functionality. 
    * Table locking and/or field locking will be used to make the application multiuser.  
