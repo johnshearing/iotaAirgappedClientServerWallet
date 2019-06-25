@@ -1,5 +1,14 @@
 # iotaAirgappedClientServerWallet
- This is the last piece of the puzzle. This work in progress is a continuation of tutorial [IOTA-Airgapped-NodeJS-Console-Wallet](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet). When the wallet is finished a tutorial will be made in the style of [The NodeJS Master Class - No Frameworks, No NPM, No Dependencies](https://pirple.thinkific.com/courses/the-nodejs-master-class). No dependencies for easy auditing. The tutorial will explain each line of code so you can write everything from scratch if you want to. Client server architecture runs on a single airgapped [PrivateKeyVault](https://github.com/johnshearing/PrivateKeyVault) for individuals or on an airgapped network for large institutions or government. In the alternative, all this code will run on any device that runs NodeJS.  
+This is the last piece of the puzzle. This work in progress is a continuation of tutorial [IOTA-Airgapped-NodeJS-Console-Wallet](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet).  
+ 
+I am building this wallet using the methods taught in the following tutorial:  
+[The NodeJS Master Class - No Frameworks, No NPM, No Dependencies](https://pirple.thinkific.com/courses/the-nodejs-master-class)  
+No dependencies makes for easy auditing.  
+
+The app runs in the browser using NodeJS Client server architecture.  
+It runs on a single airgapped [PrivateKeyVault](https://github.com/johnshearing/PrivateKeyVault) for individuals or on an airgapped network for large institutions or government. In the alternative, all this code will run on any device that runs NodeJS.  
+
+When the wallet is finished, a video tutorial will be made explaining each line of code so you can write everything from scratch if you want to.  
  
  To use this code, simply install NodeJS on your device and clone this repository.  
  Then from the command line, cd into the folder where this repository has been cloned.  
@@ -32,6 +41,8 @@
    * Working this way also eliminates the confusion created by snap shots.  
  * [Bundle Transactions Offline then Broadcast Transactions Online,](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-a-signed-transaction-bundle-and-broadcast-it-to-the-tangle)   
    * Users will see a visual representation of actions the bundle will perform as check before broadcasting bundle.  
+   * If the bundle does not make it onto the tangle within a set period of time the bundle will be promoted, reattached, or rebroadcast.  
+   * And if the bundle is still not accepted after several attempts then a text message will be transmitted to the senders phone.    
  * [Handle Multi-Signatures building upon work found here](https://www.mobilefish.com/services/cryptocurrency/iota_multisig.html),  
  * MAM Masked Authenticated Messaging,  
  * Implement all the functionality available through Qubic as that comes online,  
