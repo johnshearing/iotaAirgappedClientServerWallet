@@ -24,7 +24,7 @@ app.init = function()
   server.init();
 
   // Start the workers.
-  workers.init();
+  //workers.init();
 
 };
 
