@@ -12,6 +12,7 @@
 // Dependencies
 const server = require('./lib/server');
 const workers = require('./lib/workers');
+var cli = require('./lib/cli');
 
 // Declare the app.
 var app = {};
@@ -25,6 +26,14 @@ app.init = function()
 
   // Start the workers.
   //workers.init();
+
+  // Start the Command Line Interface (CLI).
+  // Make sure the CLI starts last. 
+  // That's so console.log messages from workers.init and server.init do no confuse users at the command prompt
+  setTimeout(function()
+  {
+    cli.init();
+  }, 50);
 
 };
 
