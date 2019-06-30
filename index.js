@@ -25,7 +25,7 @@ app.init = function()
   server.init();
 
   // Start the workers.
-  //workers.init();
+  workers.init();
 
   // Start the Command Line Interface (CLI).
   // Make sure the CLI starts last. 
