@@ -4,7 +4,7 @@ It's starting out as NodeJS code generator and database on it's way to becoming 
 When it matures it will be the first full blown accounting system for IOTA that machines, individuals, corporations, and goverments can use for managing their business and for cooperating with each other.  
 This work in progress is a continuation of tutorial [IOTA-Airgapped-NodeJS-Console-Wallet](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet).  
  
-This wallet being constructed using the methods shown in the following tutorial:  
+This wallet is being constructed using the methods shown in the following tutorial:  
 [The NodeJS Master Class - No Frameworks, No NPM, No Dependencies](https://pirple.thinkific.com/courses/the-nodejs-master-class)  
 No dependencies makes for easy auditing.  
 
