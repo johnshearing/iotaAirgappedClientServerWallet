@@ -12,7 +12,7 @@
 // Dependencies
 const server = require('./lib/server');
 const workers = require('./lib/workers');
-var cli = require('./lib/cli');
+var cli = require('./lib/repl');
 
 // Declare the app.
 var app = {};
@@ -21,11 +21,12 @@ var app = {};
 // Define the init function.
 app.init = function()
 {
-  // Start the server.
+  // Start the server for communication with users via http or https
   server.init();
 
-  // Start the workers.
-  //workers.init();
+  // Start the workers or background tasks.
+  // workers.init();
+
 
   // Start the Command Line Interface (CLI).
   // Make sure the CLI starts last. 
@@ -33,7 +34,7 @@ app.init = function()
   setTimeout(function()
   {
     cli.init();
-  }, 50);
+  }, 5000);
 
 };
 
