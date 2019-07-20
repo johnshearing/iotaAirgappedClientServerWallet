@@ -24,7 +24,7 @@
     </div>
     <div class="inputWrapper">
       <div class="inputLabel">email</div>
-      <input type="text" name="email" placeholder="alice.adleman@gmail.com" />
+      <input class="emailInput" type="text" name="email" placeholder="js@gmail.com" />
     </div>
     <div class="inputWrapper ctaWrapper">
       <button type="submit" class="cta green">Save Changes</button>
@@ -57,7 +57,8 @@
   <form id="accountEdit3" action="/api/users" method="DELETE">
     <input type="hidden" name="_method" value="DELETE"/>
     <div class="formError"></div>
-    <div class="warning">Warning: This action cannot be undone. Dont click this button on accident!</div>
+    <div class="warning">Warning: This action cannot be undone. <br>
+      Don't click this button on accident!</div>
     <input class="hiddenPhoneNumberInput" type="hidden" name="phone" />
     <div class="inputWrapper ctaWrapper">
       <button type="submit" class="cta red">Delete Account</button>
