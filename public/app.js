@@ -603,6 +603,7 @@ app.loadDataOnPage = function()
 
 
 // Load the account edit page with data from the server. Log out the user if there are errors.
+// This function is called once when the page loads.
 app.loadAccountEditPage = function()
 {
   // Get the phone number from the current token.
@@ -651,68 +652,83 @@ app.loadAccountEditPage = function()
 
 
 
-// Load the dashboard page specifically
+// Load the dashboard page with data from the server.
+// This function is called once when the page loads.
 app.loadChecksListPage = function()
 {
-  // Get the phone number from the current token, or log the user out if none is there
+  // Get the phone number from the current token
   var phone = typeof(app.config.sessionToken.phone) == 'string' ? app.config.sessionToken.phone : false;
-  if(phone)
+
+  if(phone) 
   {
-    // Fetch the user data
+    // Define which file will be retrieved from the users folder.
     var queryStringObject = {'phone' : phone};
 
+    // Load responsePayload with the user's JSON record found in the user file for which the fileName matches 
+    // the user's phone number given in the queryStringObject. What we want from the JSON record is the array of 
+    // checks that belong to the user. Then run the callback defined here to load the page with the user's checks.
     app.client.request(undefined,'api/users','GET',queryStringObject,undefined,function(statusCode,responsePayload)
     {
-      if(statusCode == 200)
+      if(statusCode == 200) // The user's JSON record was retrived successfully.
       {
-        // Determine how many checks the user has
+        // Load allChecks with the array of checks that were found in the user's JSON record.
         var allChecks = typeof(responsePayload.checks) == 'object' && responsePayload.checks instanceof Array && responsePayload.checks.length > 0 ? responsePayload.checks : [];
 
-        if(allChecks.length > 0)
+        // If the user has checks to load on the webpage:
+        if(allChecks.length > 0) 
         {
-          // Show each created check as a new row in the table
+          // Cycle through the array and insert each check as a new row in the table.
           allChecks.forEach(function(checkId)
           {
-            // Get the data for the check
+            // Create a queryStringObject that can be used to ask the server for a check.
             var newQueryStringObject = {'id' : checkId};
 
+            // Ask the server for the JSON record found in the check file for which the file name matches the checkId.
+            // Then run the callback function defined here which inserts a row into the checksListTable on the webpage
+            // and populates it with data from the JSON record.
             app.client.request(undefined,'api/checks','GET',newQueryStringObject,undefined,function(statusCode,responsePayload)
             {
-              if(statusCode == 200)
+              // if the JSON record with info about the check was retrieved successfully
+              if(statusCode == 200) 
               {
-                var checkData = responsePayload;
-
-                // Make the check data into a table row
+                // Create a handle which can be used to manipulate the table on the webpage.
                 var table = document.getElementById("checksListTable");
+
+                // Insert a new row in the table.
                 var tr = table.insertRow(-1);
+                // Make the new row a member of the class 'checkRow'
                 tr.classList.add('checkRow');
+
+                // Insert five new cells into the new row.
                 var td0 = tr.insertCell(0);
                 var td1 = tr.insertCell(1);
                 var td2 = tr.insertCell(2);
                 var td3 = tr.insertCell(3);
                 var td4 = tr.insertCell(4);
+
+                // load the new cells with data from the responsePayload.
                 td0.innerHTML = responsePayload.method.toUpperCase();
                 td1.innerHTML = responsePayload.protocol+'://';
                 td2.innerHTML = responsePayload.url;
                 var state = typeof(responsePayload.state) == 'string' ? responsePayload.state : 'unknown';
                 td3.innerHTML = state;
                 td4.innerHTML = '<a href="/checks/edit?id='+responsePayload.id+'">View / Edit / Delete</a>';
-              } 
-              else 
+              } // End of: if the JSON record with info about the check was retrieved successfully
+              else // Status code was not 200. There was a problem retriving the JSON record in the check file.
               {
                 console.log("Error trying to load check ID: ",checkId);
               }
-            });
-          });
+            }); // End of: app.client.request(undefined,'api/checks','GET'...
+          }); //End of: allChecks.forEach(function(checkId){...}
 
-          if(allChecks.length < 5)
+          if(allChecks.length < 5) //Only 5 checks allowed.
           {
             // Show the createCheck CTA
             document.getElementById("createCheckCTA").style.display = 'block';
           }
 
-        } 
-        else 
+        } // End of: if checks were found in the user's file.
+        else // There were no checks found in the user file.
         {
           // Show 'you have no checks' message
           document.getElementById("noChecksMessage").style.display = 'table-row';
@@ -721,36 +737,50 @@ app.loadChecksListPage = function()
           document.getElementById("createCheckCTA").style.display = 'block';
 
         }
-      } 
-      else 
+      } // End of: If the user's JSON record was retrieved successfully.
+      else // The user's JSON record was not retrived successfully.
       {
-        // If the request comes back as something other than 200, log the user our (on the assumption that the api is temporarily down or the users token is bad)
+        // If the request comes back as something other than 200, log the user out 
+        // on the assumption that the api is temporarily down or the users token is bad
         app.logUserOut();
       }
-    });
-  } 
-  else 
+    }); // End of: app.client.request(undefined,'api/users'...
+  } //End of: if(phone)
+  else // No phone number was found in the session token.
   {
     app.logUserOut();
   }
-};
+}; //End of: app.loadChecksListPage = function(){...}
+// End of: Load the dashboard page with data from the server.
 
 
-// Load the checks edit page specifically
-app.loadChecksEditPage = function(){
-  // Get the check id from the query string, if none is found then redirect back to dashboard
+
+
+// Load the checks edit page with data from the server.
+// This function is called once when the page loads.
+app.loadChecksEditPage = function()
+{
+  // Get the check id from the query string in the address bar, if none is found then redirect back to dashboard
   var id = typeof(window.location.href.split('=')[1]) == 'string' && window.location.href.split('=')[1].length > 0 ? window.location.href.split('=')[1] : false;
-  if(id){
-    // Fetch the check data
-    var queryStringObject = {
-      'id' : id
-    };
-    app.client.request(undefined,'api/checks','GET',queryStringObject,undefined,function(statusCode,responsePayload){
-      if(statusCode == 200){
 
-        // Put the hidden id field into both forms
+  if(id)
+  {
+    // Make an object from the id string for use in the server request below.
+    var queryStringObject = {'id' : id};
+
+    // Ask the server for the JSON record found in the check file for which the file name matches the queryStringObject.
+    // Then run the callback function defined here which populates the forms on the webpage with data from the record.   
+    app.client.request(undefined,'api/checks','GET',queryStringObject,undefined,function(statusCode,responsePayload)
+    {
+      // If the JSON record was retrieved from the file successfully:
+      if(statusCode == 200) 
+      {
+        // Create handles which will be used to manipulate the hiddenIdInputs on the webpage.
         var hiddenIdInputs = document.querySelectorAll("input.hiddenIdInput");
-        for(var i = 0; i < hiddenIdInputs.length; i++){
+
+        // Cycle through the hidden inputs on webpage and populate with the checkId
+        for(var i = 0; i < hiddenIdInputs.length; i++)
+        {
             hiddenIdInputs[i].value = responsePayload.id;
         }
 
@@ -761,32 +791,57 @@ app.loadChecksEditPage = function(){
         document.querySelector("#checksEdit1 .urlInput").value = responsePayload.url;
         document.querySelector("#checksEdit1 .methodInput").value = responsePayload.method;
         document.querySelector("#checksEdit1 .timeoutInput").value = responsePayload.timeoutSeconds;
+
+        // Create a handle for manipulating the checkboxes on the form.
         var successCodeCheckboxes = document.querySelectorAll("#checksEdit1 input.successCodesInput");
-        for(var i = 0; i < successCodeCheckboxes.length; i++){
-          if(responsePayload.successCodes.indexOf(parseInt(successCodeCheckboxes[i].value)) > -1){
+
+        // Cycle through all the checkboxes on the form.
+        for(var i = 0; i < successCodeCheckboxes.length; i++)
+        {
+          // If the checkbox we are currently looking at on the form is a 
+          // member of the success codes stored in the JSON record:
+          if(responsePayload.successCodes.indexOf(parseInt(successCodeCheckboxes[i].value)) > -1)
+          {
+            // Mark the checkbox on the form with a check mark
             successCodeCheckboxes[i].checked = true;
           }
-        }
-      } else {
+        } // End of: Cycle through all the checkboxes on the form.
+      } 
+      else // the status code was not 200
+      {
         // If the request comes back as something other than 200, redirect back to dashboard
         window.location = '/checks/all';
       }
-    });
-  } else {
+    }); // app.client.request(undefined,'api/checks','GET'...
+  } // End of: If the address bar contained the checkId in the query string.
+  else // There was no checkId in the address bar's query string.
+  {
+    // Send the user to the checks/all webpage.
     window.location = '/checks/all';
   }
-};
+}; // End of: app.loadChecksEditPage = function(){...}
+// End of: Load the checks edit page with data from the server.
+
+
+
 
 // Loop to renew token often
-app.tokenRenewalLoop = function(){
-  setInterval(function(){
-    app.renewToken(function(err){
-      if(!err){
+app.tokenRenewalLoop = function()
+{
+  setInterval(function()
+  {
+    app.renewToken(function(err)
+    {
+      if(!err)
+      {
         console.log("Token renewed successfully @ "+Date.now());
       }
     });
   },1000 * 60);
 };
+// End of: Loop to renew token often
+
+
 
 // Init (bootstrapping)
 app.init = function(){
@@ -807,8 +862,12 @@ app.init = function(){
   app.loadDataOnPage();
 
 };
+// End of: Init (bootstrapping)
 
-// Call the init processes after the window loads
+
+
+// Call the init processes after the window loads.
+// This is where it all starts.
 window.onload = function(){
   app.init();
 };
