@@ -38,8 +38,7 @@ To use this application simply follow the instructions below.
   * Next install the iota.js library by executing the following command at the bash console.  
   * `npm install @iota/core`  
 
-#### Install the iotaAirgappedClientServerWallet repository  
-* At the BASH command line, cd into the **iotajs** directory you just made.  
+#### Install the iotaAirgappedClientServerWallet repository    
 * Then execute the following command at the BASH console.   
 * `git clone https://github.com/johnshearing/iotaAirgappedClientServerWallet.git`  
 * Now the Client/Server wallet is installed in a new directory called **iotaAirgappedClientServerWallet**  
