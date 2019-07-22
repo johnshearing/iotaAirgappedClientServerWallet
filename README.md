@@ -24,7 +24,6 @@ To use this application simply follow the instructions below.
 * If you are using a PrivateKeyVault or a raspberry pi 2 then NodeJS installation instructions are [here](https://github.com/johnshearing/PrivateKeyVault#install-nodejs-and-npm).  
 * Otherwise download NodeJS for your system [here](https://nodejs.org/en/download/).   
 
-
 #### Install iota.js  
 * [Check out the documentation - found here](https://github.com/iotaledger/iota.js/blob/next/api_reference.md)  
 * [The iota.js library and install instructions are found here](https://github.com/iotaledger/iota.js).  
@@ -37,14 +36,13 @@ To use this application simply follow the instructions below.
   * Next install the iota.js library by executing the following command at the bash console.  
   * `npm install @iota/core`  
 
-#### Install the IOTA-Airgapped-NodeJS-Console-Wallet repository  
+#### Install the iotaAirgappedClientServerWallet repository  
 * At the BASH command line, cd into the **iotajs** directory you just made.  
 * Then execute the following command at the BASH console.   
-* `git clone https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet.git`  
-* Now the Console Wallet is installed in a new directory called **IOTA-Airgapped-NodeJS-Console-Wallet**  
-* Change the name of the directory to something shorter. Call it **Console-Wallet**  
-* At the BASH console, CD into the **Console-Wallet** directory and look at the scripts with your favorite text editor.  
-* You will be using these scripts at the BASH console to securely store and spend your IOTAs.  
+* `git clone https://github.com/johnshearing/iotaAirgappedClientServerWallet.git`  
+* Now the Client/Server wallet is installed in a new directory called **iotaAirgappedClientServerWallet**  
+* Change the name of the directory to something shorter. Call it **ias** for IOTA Accounting System.  
+* At the BASH console, CD into the **ias** directory    
 
 #### Start the Application  
  Run the following command to start the NodeJS server:  
