@@ -6,7 +6,15 @@
 // Container for frontend application
 var app = {};
 
-// Config
+// Create an object to store the session token.
+// The session token is a string of 20 random characters.
+// You get a session token pressing the submit button at the login page which
+// runs the anonymous function defined in app.bindForms
+// You keep the session token in localStorage until the browser is completly closed.
+// If the tabsheet where this code is hosted is closed while the browser is left open 
+// then the token remains in memory for use if you open a new tab and navigate back to 
+// the application. 
+// The token expires in one hour if you do not have the application open.
 app.config = {
   'sessionToken' : false
 };
@@ -147,10 +155,10 @@ app.logUserOut = function(redirectUser)
 
 
 
-// Add a listener to the submit event of all forms in the DOM and 
-// bind the anonymous function declared below using the addEventListener.
-// bindForms is called from app.init when the webpage is loaded.
-// But the anonymous function declared using addEventListener will run only when the form is submitted.
+// Add a listener to the submit event of all forms in the DOM and bind the anonymous 
+// function declared below to the listener using addEventListener.
+// bindForms is called from app.init when the webpage is loaded but the anonymous 
+// function declared using addEventListener only runs when the form is submitted.
 // The function takes the submit event object (e) as the argument.
 app.bindForms = function()
 {
@@ -292,10 +300,6 @@ app.bindForms = function()
 // So this function defines what happens after a form has been sucessfully submitted.
 app.formResponseProcessor = function(formId,requestPayload,responsePayload)
 {
-  // This variable is defined but never used. 
-  // Perhaps there is a use case for this.
-  var functionToCall = false;
-
   // If account creation was successful, try to immediately log the user into the new account
   if(formId == 'accountCreate')
   {
