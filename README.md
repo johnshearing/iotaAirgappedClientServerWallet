@@ -16,9 +16,11 @@ When this wallet is finished, a video tutorial will be made explaining each line
 Let's get started.   
 To use this application simply follow the instructions below.  
 
-#### Install NodeJS on your airgapped machine and your online machine as well.  
-* You are probably wondering, how am I supposed to install software on an airgapped machine that does not connect to the Internet?  
-* Well your airgapped machine is not airgapped until you say it's airgapped so for right now it's ok to connect to the Internet.  
+#### Install NodeJS.  
+* Install NodeJS on your airgapped computer and your online computer if you are using two machines.  
+* If you are just experimenting with small amount of IOTA then you may prefer to use an online machine only.  
+* You may be wondering, how am I supposed to install software on an airgapped machine that does not connect to the Internet?  
+* Your airgapped computer does not have any private information on it yet, so for right now it's ok to connect to the Internet.  
 * When all the software is installed and you are ready to sign transactions, then you simply pull the plug on the Internet and never connect to it again.  
 * Then you will create new seeds and new addresses from behind the airgap and use these instead of the experimental ones you are playing with now.  
 * If you are using a PrivateKeyVault or a raspberry pi 2 then NodeJS installation instructions are [here](https://github.com/johnshearing/PrivateKeyVault#install-nodejs-and-npm).  
