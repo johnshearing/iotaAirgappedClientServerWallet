@@ -12,11 +12,42 @@ This app runs in the browser using NodeJS Client server architecture.
 It runs on a single airgapped [PrivateKeyVault](https://github.com/johnshearing/PrivateKeyVault) for individuals or on an airgapped network for large institutions or government. In the alternative, all this code will run on any device that runs NodeJS.  
 
 When this wallet is finished, a video tutorial will be made explaining each line of code so you can write everything from scratch if you want to. This will facilitate an audit.  
- 
- To use this code, simply install NodeJS on your device and clone this repository.  
- Then from the command line, cd into the folder where this repository has been cloned.  
- Now clone [IOTA's NodeJS JavaScript library](https://github.com/iotaledger/iota.js) into the current directory.  
- Next, run the following command to start the NodeJS server:  
+
+Let's get started.   
+To use this application simply follow the instructions below.  
+
+#### Install NodeJS on your airgapped machine and your online machine as well.  
+* You are probably wondering, how am I supposed to install software on an airgapped machine that does not connect to the Internet?  
+* Well your airgapped machine is not airgapped until you say it's airgapped so for right now it's ok to connect to the Internet.  
+* When all the software is installed and you are ready to sign transactions, then you simply pull the plug on the Internet and never connect to it again.  
+* Then you will create new seeds and new addresses from behind the airgap and use these instead of the experimental ones you are playing with now.  
+* If you are using a PrivateKeyVault or a raspberry pi 2 then NodeJS installation instructions are [here](https://github.com/johnshearing/PrivateKeyVault#install-nodejs-and-npm).  
+* Otherwise download NodeJS for your system [here](https://nodejs.org/en/download/).   
+
+
+#### Install iota.js  
+* [Check out the documentation - found here](https://github.com/iotaledger/iota.js/blob/next/api_reference.md)  
+* [The iota.js library and install instructions are found here](https://github.com/iotaledger/iota.js).  
+* To install:  
+  * Make a new directory on each machine. Call it **iotajs**.  
+  * At the bash console, cd into the directory.  
+  * Execute the following command at the bash console to create a package.json file.  
+  * The package.json file is used to manage your project.  
+  * `npm init`  Accept all the defaults.  
+  * Next install the iota.js library by executing the following command at the bash console.  
+  * `npm install @iota/core`  
+
+#### Install the IOTA-Airgapped-NodeJS-Console-Wallet repository  
+* At the BASH command line, cd into the **iotajs** directory you just made.  
+* Then execute the following command at the BASH console.   
+* `git clone https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet.git`  
+* Now the Console Wallet is installed in a new directory called **IOTA-Airgapped-NodeJS-Console-Wallet**  
+* Change the name of the directory to something shorter. Call it **Console-Wallet**  
+* At the BASH console, CD into the **Console-Wallet** directory and look at the scripts with your favorite text editor.  
+* You will be using these scripts at the BASH console to securely store and spend your IOTAs.  
+
+#### Start the Application  
+ Run the following command to start the NodeJS server:  
  `node ./index.js`  
  Finally, open your browser and enter the following address:  
  `http://localhost:3000/`  
