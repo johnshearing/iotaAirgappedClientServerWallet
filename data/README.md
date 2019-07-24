@@ -1,1 +1,2 @@
-Folders will automatically be genereated in this data folder as needed to track Users, Tokens, Checks, and Logs
+The following folders must already be inside this folder in order for the system to function.  
+Users, Tokens, Checks, Logs, suid  
