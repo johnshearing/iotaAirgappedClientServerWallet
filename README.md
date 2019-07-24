@@ -18,7 +18,7 @@ To use this application simply follow the instructions below.
 
 #### Install NodeJS.  
 * Install NodeJS on your airgapped computer and your online computer if you are using two machines.  
-* If you are just experimenting with small amount of IOTA then you may prefer to use an online machine only.  
+* If you are just experimenting with small amounts of IOTA then you may prefer to use an online machine only.  
 * You may be wondering, how am I supposed to install software on an airgapped machine that does not connect to the Internet?  
 * Your airgapped computer does not have any private information on it yet, so for right now it's ok to connect to the Internet.  
 * When all the software is installed and you are ready to sign transactions, then you simply pull the plug on the Internet and never connect to it again.  
