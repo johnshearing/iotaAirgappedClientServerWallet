@@ -8,9 +8,9 @@ This is file contains a single number which is:
 3. Incremented: The number is incremented.  
 4. Unlocked: The "lock" folder is deleted.  
 
-The file is locked by creating a new folder called "lock" inside the nextId folder before the read is attempted.  
-The operating system will not allow a second folder of the same name to be created in the nextId folder.  
-So if another user attempts to read the gsuid while the lock folder exists then they will get an error stating that the lock folder can not be created because a file of the same name already exists. This error will be handled with several retries before failing. 
+The file is locked by creating a new folder called "lock" inside the dbHistory folder before the read is attempted.  
+The operating system will not allow a second folder of the same name to be created in the dbHistory folder.  
+So if another user attempts to read the gsuid while the lock folder exists then they will get a message stating that the lock folder can not be created because a file of the same name already exists. This error will be handled behind the scenes with several retries before throwing an error which will notify the administrator. The assumption is that if the lock file has not been removed within some limited amount of time then the previous users action failed. The system will remain locked until the administrator determines what happend, makes repairs to the database if needed, and then removes the lock folder.  
 
 All records in the database (no matter from what table) will get their unique ids from this Globally Sequential Unique ID so that every record has a system wide unique identifier that tells when it was created with respect to all the other records in the database.  
 
