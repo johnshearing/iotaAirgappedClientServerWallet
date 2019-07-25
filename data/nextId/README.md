@@ -12,5 +12,7 @@ The operating system will not allow a second folder of the same name to be creat
 So if another user attempts to read the gsuid while the lock folder exists then they will get an error stating that the lock folder can not be created because a file of the same name already exists. This error will be handled with several retries before failing.  
 
 All records in the database (no matter from what table) will get their unique ids from this Globally Sequential Unique ID so that every record has a system wide unique identifier that tells when it was created with respect to all the other records in the database.  
+
 Any adds, changes, or deletes to a record will be recorded in a history log that captures the entire record in it's new state and tells who made the entry and by what method.  
+
 This along with the Globally Sequential Unique ID allows the entire database to be reconstructed to represent any point in history.  
