@@ -1,4 +1,5 @@
-This folder contains a file called gsuid.json  
+This folder contains two files:
+The first file is called gsuid.json  
 The name is an acronym for Globally Sequential Unique ID.  
 
 This is file contains a single number which is:  
@@ -13,6 +14,6 @@ So if another user attempts to read the gsuid while the lock folder exists then 
 
 All records in the database (no matter from what table) will get their unique ids from this Globally Sequential Unique ID so that every record has a system wide unique identifier that tells when it was created with respect to all the other records in the database.  
 
-Any adds, changes, or deletes to a record will be recorded in a history log that captures the entire record in it's new state and tells who made the entry and by what method.  
+The second file in this folder is called dbLog. Any adds, changes, or deletes to a record will be recorded in dbLog which captures the entire record in it's new state and tells who made the entry and by what method.  
 
 This along with the Globally Sequential Unique ID allows the entire database to be reconstructed to represent any point in history.  
