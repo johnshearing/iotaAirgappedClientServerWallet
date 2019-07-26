@@ -16,4 +16,4 @@ All records in the database (no matter from what table) will get their unique id
 
 The second file in this folder is called dbLog.json. Any adds, changes, or deletes to a record will be recorded in dbLog.json which captures the entire record in it's new state and tells who made the entry and by what method and when the entry was made.  
 
-This along with the Globally Sequential Unique ID allows the entire database to be reconstructed to represent any point in history.  
+This along with the Global Sequential Unique ID allows the entire database to be reconstructed to represent any point in history.  
