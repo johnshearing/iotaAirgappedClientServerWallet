@@ -1,4 +1,4 @@
-This folder contains two files:
+This folder contains two files besides this README.md:  
 The first file is called gsuid.json.  
 The name is an acronym for Globally Sequential Unique ID.  
 
