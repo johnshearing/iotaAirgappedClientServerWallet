@@ -3,4 +3,5 @@
 /data/tokens
 /data/users
 /data/dbHistory
+/data/dbHistory/gsuid.json
 .vscode
