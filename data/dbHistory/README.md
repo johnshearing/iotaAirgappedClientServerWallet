@@ -2,7 +2,7 @@ This folder contains two files besides this README.md:
 The first file is called gsuid.json.  
 The name is an acronym for Global Sequential Unique ID.  
 
-This is file contains just a single JSON object which looks like this: `{"nextId":1}'  
+This is file contains just a single JSON object which looks like this: `{"nextId":1}`  
 If the file does not exist then it is created when it is first used.
 
 All records in the database (no matter from what table) get their unique ids from this Global Sequential Unique ID so that every record has a system wide unique identifier that tells in what order it was created with respect to all the other records in the database. 
@@ -29,7 +29,7 @@ Working with the gsuid.json goes as follows:
 * The system will not allow anyone else to remove the folder and then only through the program logic to enforce security.  
 
 Most of this logic has already been implemented.  
-Look in data.js. The functions are gsuidLockReadIncUnlock() and nextId()  
+Look in `data.js`. The functions are `gsuidLockReadIncUnlock()` and `nextId()`  
 
 The dbLog.json file only gets appended to but it will be locked along with all other files that are part of the transaction. When the entire transaction has been completed then all the files will be unlocked. If the transaction can not be completed the everything will be rolled back to it's original state.  
 
