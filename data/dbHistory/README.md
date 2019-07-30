@@ -23,11 +23,13 @@ Working with the gsuid.json goes as follows:
 * So if a second user attempts to read the gsuid.json file the while the lock folder exists then the code will throw an error stating that the lock folder can not be created because a folder of the same name already exists.  
 * This stops the second user's code from running which prevents a read of the nextId until the first user reads it, increments it, and removes the lock.  
 * The second user's error is caught silently behind the scenes with several retries to lock the file before finally notifying the administrator if a lock can not be obtained.  
-* The system signs the lock folder for the user by placing a text document into the folder which idenifies the user.  
+* The system signs the lock folder for the user by placing a text document into the folder which identifies the user. I may choose to let nodejs modify the properties of the folder instead.  
 * The system will not allow anyone else to remove the folder and then only through the program logic to enforce security.  
 
 Most of this logic has already been implemented.  
 Look in data.js. The functions are gsuidLockReadIncUnlock() and nextId()  
+
+The dbLog.json file only gets appended to but it will be locked along with all other files that are part of the transaction. When the entire transaction has been completed then all the files will be unlocked. If the transaction can not be completed the everything will be rolled back to it's original state.  
 
  
 
