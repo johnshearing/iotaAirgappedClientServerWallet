@@ -3,10 +3,11 @@ The first file is called gsuid.json.
 The name is an acronym for Global Sequential Unique ID.  
 
 This is file contains just a single JSON object which looks like this: `{"nextId":1}'  
+If the file does not exist then it is created when it is first used.
 
-All records in the database (no matter from what table) will get their unique ids from this Global Sequential Unique ID so that every record has a system wide unique identifier that tells in what order it was created with respect to all the other records in the database. 
+All records in the database (no matter from what table) get their unique ids from this Global Sequential Unique ID so that every record has a system wide unique identifier that tells in what order it was created with respect to all the other records in the database. 
 
-The second file in this folder is called dbLog.json. If it does not exist then it will be created when the system is first used. Any adds, changes, or deletes to a record will be recorded in dbLog.json which captures the entire record in it's new state and tells who made the entry and by what method and when the entry was made.  
+The second file in this folder is called dbLog.json. If it does not exist then it is created when the system is first used. Any adds, changes, or deletes to a record will be recorded in dbLog.json which captures the entire record in it's new state and tells who made the entry, by what method and when the entry was made.  
 
 This along with the Global Sequential Unique ID allows the entire database to be reconstructed to represent any point in history.  
 
