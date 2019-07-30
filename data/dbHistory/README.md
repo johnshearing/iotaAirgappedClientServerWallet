@@ -31,6 +31,7 @@ Working with the gsuid.json goes as follows:
 Most of this logic has already been implemented.  
 Look in `data.js`. The functions are `gsuidLockReadIncUnlock()` and `nextId()`  
 
+The following has not been implemented yet. Coming soon.  
 The dbLog.json file only gets appended to but it will be locked along with all other files that are part of the transaction. When the entire transaction has been completed then all the files will be unlocked. If the transaction can not be completed the everything will be rolled back to it's original state.  
 
  
