@@ -9,14 +9,14 @@ All records in the database (no matter from what table) get their unique ids fro
 Most of this logic has already been implemented.  
 Look in `data.js`. The functions are `gsuidLockReadIncUnlock()` and `nextId()`  
 
-Working with the gsuid.json goes as follows:  
-* Lock: The file is locked.  
-* Read: The nextId is read.  
-  * This number is used to uniquely and chronologically identify all records in the database.  
-  * The number is also used to track adds, updates, and deletes to all records in all tables.  
-* Incremented: The nextId is incremented.  
-  * You can increment more than one if you need to secure a range of numbers.  
-* The file is unlocked.  
+* Working with the gsuid.json goes as follows:  
+  * Lock: The file is locked.  
+  * Read: The nextId is read.  
+    * This number is used to uniquely and chronologically identify all records in the database.  
+    * The number is also used to track adds, updates, and deletes to all records in all tables.  
+  * Incremented: The nextId is incremented.  
+    * You can increment more than one if you need to secure a range of numbers.  
+  * The file is unlocked.  
 
 * The gsuid.json file is locked by creating a new folder called ("gsuid.lock") inside the dbHistory folder before the read is attempted.  
 * The operating system will not allow a second folder of the same name to be created in the dbHistory folder.  
@@ -26,12 +26,14 @@ Working with the gsuid.json goes as follows:
 * The system signs the lock folder for the user by placing a text document into the folder which identifies the user. I may choose to let nodejs modify the properties of the folder instead.  
 * The system will not allow anyone else to remove the folder and then only through the program logic to enforce security.  
 
-The second file in this folder is called dbLog.json. If it does not exist then it is created when the system is first used. Any adds, changes, or deletes to a record will be recorded in dbLog.json which captures the entire record in it's new state and tells who made the entry, by what method and when the entry was made.  
+The second file in this folder is called dbLog.json. If it does not exist then it must be created when the system is first used. Any adds, changes, or deletes to a record will be recorded in dbLog.json which captures the entire record in it's new state and tells who made the entry, by what method and when the entry was made.  
 
 This along with the Global Sequential Unique ID allows the entire database to be reconstructed to represent any point in history.  
 
 The following has not been implemented yet. Coming soon.  
 The dbLog.json file only gets appended to but it will be locked along with all other files that are part of the transaction. When the entire transaction has been completed then all the files will be unlocked. If the transaction can not be completed the everything will be rolled back to it's original state.  
+
+
 
  
 
