@@ -1,15 +1,13 @@
 This folder contains two files besides this README.md:  
 The first file is called gsuid.json.  
 The name is an acronym for Global Sequential Unique ID.  
+This is text file contains just a single JSON object which looks like this: `{"nextId":1}`  
+If the file does not exist then it must be created when before the system is used.  
 
-This is file contains just a single JSON object which looks like this: `{"nextId":1}`  
-If the file does not exist then it is created when it is first used.
+All records in the database (no matter from what table) get their unique ids from this Global Sequential Unique ID so that every record has a system wide unique identifier that tells in what order it was created with respect to all the other records in the database.  
 
-All records in the database (no matter from what table) get their unique ids from this Global Sequential Unique ID so that every record has a system wide unique identifier that tells in what order it was created with respect to all the other records in the database. 
-
-The second file in this folder is called dbLog.json. If it does not exist then it is created when the system is first used. Any adds, changes, or deletes to a record will be recorded in dbLog.json which captures the entire record in it's new state and tells who made the entry, by what method and when the entry was made.  
-
-This along with the Global Sequential Unique ID allows the entire database to be reconstructed to represent any point in history.  
+Most of this logic has already been implemented.  
+Look in `data.js`. The functions are `gsuidLockReadIncUnlock()` and `nextId()`  
 
 Working with the gsuid.json goes as follows:  
 * Lock: The file is locked.  
@@ -28,8 +26,9 @@ Working with the gsuid.json goes as follows:
 * The system signs the lock folder for the user by placing a text document into the folder which identifies the user. I may choose to let nodejs modify the properties of the folder instead.  
 * The system will not allow anyone else to remove the folder and then only through the program logic to enforce security.  
 
-Most of this logic has already been implemented.  
-Look in `data.js`. The functions are `gsuidLockReadIncUnlock()` and `nextId()`  
+The second file in this folder is called dbLog.json. If it does not exist then it is created when the system is first used. Any adds, changes, or deletes to a record will be recorded in dbLog.json which captures the entire record in it's new state and tells who made the entry, by what method and when the entry was made.  
+
+This along with the Global Sequential Unique ID allows the entire database to be reconstructed to represent any point in history.  
 
 The following has not been implemented yet. Coming soon.  
 The dbLog.json file only gets appended to but it will be locked along with all other files that are part of the transaction. When the entire transaction has been completed then all the files will be unlocked. If the transaction can not be completed the everything will be rolled back to it's original state.  
