@@ -16,7 +16,7 @@ Look in `data.js`. The functions are `gsuidLockReadIncUnlock()` and `nextId()`
     * This number is used to uniquely and chronologically identify all records in the database.  
     * The number is also used to track adds, updates, and deletes to all records in all tables.  
   * Incremented: The nextId is incremented.  
-    * You can increment more than one if you need to secure a range of numbers.  
+    * You can increment by more than one if you need to secure a range of numbers.  
   * The file is unlocked.  
 
 * The gsuid.json file is locked by creating a new folder called ("gsuid.lock") inside the dbHistory folder before the read is attempted.  
