@@ -38,11 +38,11 @@ Most of the database system will be relational (table-joins and indexes) but the
 
 Both the Relational and NoSQL databases will be implemented as JSON text files.  
 Inserting and deleting records in the middle of a text file is troublesome and slow so only appends will be allowed.  
-Adding new record is no problem - just append it to the file.  
+Adding a new record is no problem - just append it to the file.  
 To update a record, a new JSON record will be appended to the file with updated information and the older record will be ignored.  
-It probably makes sense to stream the file backwards when reading so that the newest record is encounterd first at which point the system stops searching. Transaction rollbacks should be very easy with this method - here's why: To roll back a transaction just marke for deletion all the new records at the end of the files which were part of the incomplete transaction. Then everything will read as before.
-
 Deleted records will be marked as deleted and ignored.  
+When accessing data it might make sense to [stream the file backwards when reading](https://github.com/dominictarr/fs-reverse) so that the newest record is encounterd first at which point the system stops searching.  
+Transaction rollbacks should be very easy with this method - here's why: To roll back a transaction just mark for deletion all the new records at the end of the JSON files which were part of the incomplete transaction. Then everything will read as before.  
 At regular intervals the database can be taken offline so that outdated and deleted records can actually be removed. 
 I think this was called packing in the days of xbase.  
 
