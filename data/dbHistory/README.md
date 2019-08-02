@@ -45,12 +45,12 @@ When accessing data it might make sense to [stream the file backwards when readi
 Transaction rollbacks should be very easy with this method - here's why: To roll back a transaction just mark for deletion all the new records at the end of the JSON files which were part of the incomplete transaction. Then everything will read as before.  
 At regular intervals the database can be taken offline so that outdated and deleted records can actually be removed from tables. 
 I think this was called packing in the days of xbase.  
-While the system is offline, table can be sorted to provide faster responses to common searches.  
-Indexes can be built anytime the system is not busy.  
+
+While the system is offline, tables can be sorted to provide faster responses to common searches.  
+Indexes can be built anytime the system is not busy. [This repository might be a good place to get some ideas from](https://github.com/nextapps-de/flexsearch) because it does not use any dependencies. I imagine that a main index for a particular sort order is built while the system is offline and then a second index for new records is maintained while the system is serving records. The idea is that the secondary index is checked first because, being that it has the newer records, those are the ones you are more likely to need and also because the index is smaller, it is easier to check. If your record is not found in the second index then it will surely be found in the first index. Periodically when the system is offline, the records from the second index can be spliced into the first and then the second index can be deleted.
 
 I have done plenty of work with available databases so why not just use MySQL or Mongo?  
-Because I want to make something simple and without dependencies so that it's easy to audit.
-And because I want to learn stuff and have some fun.
+Because I want to make something simple and without dependencies so that it's easy to audit, and because I want to learn stuff and have some fun.
 :)
 
 
