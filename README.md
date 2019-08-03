@@ -46,20 +46,30 @@ To use this application simply follow the instructions below.
 * At the BASH console, CD into the **ias** directory    
 
 #### Start the Application  
- Run the following command to start the NodeJS server:  
- `node ./index.js`  
- Finally, open your browser and enter the following address:  
- `http://localhost:3000/`  
- You should see the application running in your browser.
+Run the following command to start the NodeJS server:  
+`node ./index.js`  
+Finally, open your browser and enter the following address:  
+`http://localhost:3000/`  
+You should see the application running in your browser.
  
- The app runs well but it doesn't do anything IOTA related yet.  
- IOTA functionality will be built in very shortly.  
- The focus now is on getting the framework right.  
- Then building on top of this framework will go quickly.  
+The app runs well but it doesn't do anything IOTA related yet.  
+IOTA functionality will be built in very shortly.  
+The focus now is on getting the framework right.  
+Then building on top of this framework will go quickly.  
+ 
+#### What's Different and Where's the Opportunity?
+Large centralized systems are very hard to secure. That's why we keep hearing about hacks at large institutions. Large means lots of vulnerabilities and complex means that they are very hard to see. This doesn't mater so much with a large accounting systems when the actual funds they track are secured by banks. But an accounting system for cryptocurrency also protects the currency from theft. They must be both accounting system and bank.  
+
+Small simple systems are inherently more secure and easier to protect because small means fewer vulnerabilities and because simple means those weaknesses are easier to spot. Furthermore, distributed systems are harder to attack and typically yield less profit for the attacker because they tend to be smaller. That's a deterent which itself is a kind of protection.  
+ 
+Since the accounting system is for a decentralized ledger, it does not have to be big or complicated as in centralized systems.  
+Think about how very simple creatures like bees when grouped together perform complex behaviours like voting in a very efficient manner.  
+There will be many of these simple accounting systems that when working together will provide the complex behaviors society needs for efficient collaboration.  
+ 
  
  The wallet will:  
  * Have database functionality. 
-   * Table locking and/or field locking will be used to make the application multiuser.  
+   * Table locking is used to make the application multiuser.       
    * Transaction rollbacks will be implemented if any part of the transaction fails.  
    * All records/documents in the database (no matter from what table/collection) will get their unique ids from a single incremented source so that every record/document has a system wide unique id that identifies when it was created with respect to all the other records/documents in the database. You will see why in a minute.  
    * Any adds, changes, or deletes to a record/document will be recorded in a log that captures the entire record/document in it's new state. This along with the system wide unique ids allows the entire database to be reconstructed to represent any point in history.  
