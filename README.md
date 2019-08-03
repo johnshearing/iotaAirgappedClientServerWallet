@@ -58,45 +58,43 @@ The focus now is on getting the framework right.
 Then building on top of this framework will go quickly.  
  
 #### What's Different and Where's the Opportunity?
-Large centralized systems are very hard to secure. That's why we keep hearing about hacks at large institutions. Large means lots of vulnerabilities and complex means that they are very hard to see. This doesn't mater so much with a large accounting systems when the actual funds they track are secured by banks. But an accounting system for cryptocurrency also protects the currency from theft. They must be both accounting system and bank.  
+Large centralized systems are very hard to secure. That's why we keep hearing about hacks at large institutions. Large means lots of vulnerabilities and complex means that these weaknesses are very hard to see. This doesn't mater so much with a large accounting system when the actual funds they track are secured by banks. But an accounting system for cryptocurrency also protects the currency from theft. It must be both accounting system and bank.  
 
 Small simple systems are inherently more secure and easier to protect because small means fewer vulnerabilities and because simple means those weaknesses are easier to spot. Furthermore, distributed systems are harder to attack and typically yield less profit for the attacker because they tend to be smaller. That's a deterent which itself is a kind of protection.  
  
-Since the accounting system is for a decentralized ledger, it does not have to be big or complicated as in centralized systems.  
-Think about how very simple creatures like bees when grouped together perform complex behaviours like voting in a very efficient manner.  
-There will be many of these simple accounting systems that when working together will provide the complex behaviors society needs for efficient collaboration.  
+Since the accounting system we are building is for a decentralized ledger, it does not have to be big or complicated as in centralized systems. Think about how very simple creatures, like bees, when grouped together perform complex behaviours, [like voting](https://youtu.be/AonV_MkUFSs), in a very efficient manner. There will be many of these simple accounting systems that when working together will provide the complex behaviors society needs for efficient collaboration.  
  
- 
- The wallet will:  
- * Have database functionality. 
-   * Table locking is used to make the application multiuser.       
-   * Transaction rollbacks will be implemented if any part of the transaction fails.  
-   * All records/documents in the database (no matter from what table/collection) will get their unique ids from a single incremented source so that every record/document has a system wide unique id that identifies when it was created with respect to all the other records/documents in the database. You will see why in a minute.  
-   * Any adds, changes, or deletes to a record/document will be recorded in a log that captures the entire record/document in it's new state. This along with the system wide unique ids allows the entire database to be reconstructed to represent any point in history.  
-   * There are 4 database choices to consider SQL, NoSQL, JSON in text files, The Tangle. The application is being roughed out now with a JSON database [taught by Leslie Lewis in his NodeJS Master Class](https://pirple.thinkific.com/courses/the-nodejs-master-class). Once there is something to play with it can be decided which database(s) should be used.  
-   * [Here you can see what has already been implemented and you see the plan in greater detail.](https://github.com/johnshearing/iotaAirgappedClientServerWallet/blob/master/data/dbHistory/README.md)  
- * Have a code generator.
-   * Rather than writing post, get, put, delete, validation, and user interface functions for every table/collection, there will be templates instead that get populated with metadata including all the business rules that make each table/collection and each field unique. It is common practice to use templates and metadata for generating html and JavaScript on the fly for browser consumption. We are simply extending the practice for the server side NodeJS code as well.  
-   * First a simple app will be written and tested. Then templates will be made for every type of function using the simple app as a model. From that point on, any changes to the app are made in the templates and the metadata. After the changes are made, the application is regenerated. This way, major changes to functionality ripple down through the system without having to change the handlers for each table/collection and their user interfaces. This eliminates most programming errors and makes it possible to make big changes to the system as we try to figure out what works and what does not. I did this about 20 years ago using Delphi and SQL Server. It worked great. Now I am going to do it again using NodeJS and JavaScript.  
- * [Generate truly random seeds](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#generating-seeds-with-a-true-random-number-generator) (not pseudo-random) with special hardware built into every raspberry pi 2, or use another method if you want,
- * Generate keystore files for seeds.  
-   * This is an encrypted file containing just a seed.  
-   * You could give the file to other people to hold for you but they would not be able to access the seed without your password.  
-   * This provides a secure way to store seeds in an other location before putting IOTAs in any addresses generated by that seed.  
-   * There will be tears and gnashing of teeth for those who use a seed before making several keystore files and storing them in different secure locations.
- * [Identify healthy nodes](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#find-a-healthy-computer-on-the-tangle-to-use-for-checking-the-balance-of-your-new-address),   
- * [Generate addresses and check balances for a single address or for a list of addresses](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#check-your-balance-at-address-a0),   
-   * The wallet does NOT check seed balances directly. This is for security reasons.  
-   * Instead, the list of addresses generated by the seed is supplied by the database. The balances of each address can be checked and added up to give the seed's balance. This way you can get the seed balance without exposing your seed to any other device.
-   * Working this way also eliminates the confusion created by snap shots.  
- * [Bundle Transactions Offline then Broadcast Transactions Online,](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-a-signed-transaction-bundle-and-broadcast-it-to-the-tangle)   
-   * Users will see a visual representation of actions the bundle will perform as check before broadcasting bundle.  
-   * If the bundle does not make it onto the tangle within a set period of time the bundle will be promoted, reattached, or rebroadcast.  
-   * And if the bundle is still not accepted after several attempts then a text message will be transmitted to the sender's phone.    
- * [Handle Multi-Signatures building upon work found here](https://www.mobilefish.com/services/cryptocurrency/iota_multisig.html),  
- * MAM Masked Authenticated Messaging,  
- * Implement all the functionality available through Qubic as that comes online,  
- * Implement typical accounting functions such as AP, AR, GL, Inv ...  
+The wallet will:  
+* Have database functionality. 
+  * Table locking is used to make the application multiuser. Row and field locking should not be requiered because each of these small distributed systems are only supposed to support a small number of users. An unlimited amount of users and complex behavior can be supported through the interactions of these simple systems (again, like bees).  
+  * Transaction rollbacks are initiated if any part of the transaction fails.  
+  * All records/documents in the database (no matter from what table/collection) get their unique ids from a single incremented source so that every record/document has a system wide unique id that identifies when it was created with respect to all the other records/documents in the database. You will see why in a minute.  
+  * Any adds, changes, or deletes to a record/document will be recorded in a log that captures the entire record/document in it's new state. This along with the system wide unique ids allows the entire database to be reconstructed to represent any point in history.  
+  * The application is being roughed out now with a simple JSON database [taught by Leslie Lewis in his NodeJS Master Class](https://pirple.thinkific.com/courses/the-nodejs-master-class). Once there is something to play with some simple indexing will be added.  
+  * [Here you can see what has already been implemented and you see the plan in greater detail.](https://github.com/johnshearing/iotaAirgappedClientServerWallet/blob/master/data/dbHistory/README.md)  
+* Have a code generator.
+  * Rather than writing post, get, put, delete, validation, and user interface functions for every table, there will be templates instead that get populated with metadata including all the business rules that make each table, each record, and each field unique. It is common practice to use templates and metadata for generating html and JavaScript on the fly for browser consumption. We are simply extending the practice for the server side NodeJS code as well.  
+  * First a simple app will be written and tested. Then templates will be made for every type of function using the simple app as a model. From that point on, any changes to the app are made in the templates and the metadata. After any changes are made, the application is regenerated. This way, major changes to functionality ripple down through the system without having to change the handlers for each table and their user interfaces. This eliminates most programming errors and makes it possible to make big changes to the system as we try to figure out what works and what does not. I did this about 20 years ago using Delphi and SQL Server. It worked great. Now I am going to do it again using NodeJS and JavaScript.  
+  * The big payoff here is in the audit. As a system grows in size it becomes exponentially harder to audit. So rather than trying to audit the generated code. All we need to do is audit the code generator and the metadata used to generate the application. This is a much smaller and more manageable job that will lead to much tighter security and faster fixes when security flaws are discovered.  
+* [Generate truly random seeds](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#generating-seeds-with-a-true-random-number-generator) (not pseudo-random) with special hardware built into every raspberry pi 2, or use another method if you want,
+* Generate keystore files for seeds.  
+  * This is an encrypted file containing just a seed.  
+  * You could give the file to other people to hold for you but they would not be able to access the seed without your password.  
+  * This provides a secure way to store seeds in an other location before putting IOTAs in any addresses generated by that seed.  
+  * There will be tears and gnashing of teeth for those who use a seed before making several keystore files and storing them in different secure locations.
+* [Identify healthy nodes](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#find-a-healthy-computer-on-the-tangle-to-use-for-checking-the-balance-of-your-new-address),   
+* [Generate addresses and check balances for a single address or for a list of addresses](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#check-your-balance-at-address-a0),   
+  * The wallet does NOT check seed balances directly. This is for security reasons.  
+  * Instead, the list of addresses generated by the seed is supplied by the database. The balances of each address can be checked and added up to give the seed's balance. This way you can get the seed balance without exposing your seed to any other device.
+  * Working this way also eliminates the confusion created by snap shots.  
+* [Bundle Transactions Offline then Broadcast Transactions Online,](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet#make-a-signed-transaction-bundle-and-broadcast-it-to-the-tangle)   
+  * Users will see a visual representation of actions the bundle will perform as check before broadcasting bundle.  
+  * If the bundle does not make it onto the tangle within a set period of time the bundle will be promoted, reattached, or rebroadcast.  
+  * And if the bundle is still not accepted after several attempts then a text message will be transmitted to the sender's phone.    
+* [Handle Multi-Signatures building upon work found here](https://www.mobilefish.com/services/cryptocurrency/iota_multisig.html),  
+* MAM Masked Authenticated Messaging,  
+* Implement all the functionality available through Qubic as that comes online,  
+* Implement typical accounting functions such as AP, AR, GL, Inv ...  
  
  Check back often to follow the progress.  
  Feel free to make suggestions or help with the coding.  
