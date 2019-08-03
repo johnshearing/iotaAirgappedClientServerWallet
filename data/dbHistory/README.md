@@ -47,11 +47,18 @@ At regular intervals the database can be taken offline so that outdated and dele
 I think this was called packing in the days of xbase.  
 
 While the system is offline, tables can be sorted to provide faster responses to common searches.  
-Indexes can be built anytime the system is not busy. [This repository might be a good place to get some ideas from](https://github.com/nextapps-de/flexsearch) because it does not use any dependencies. I imagine that a main index for a particular sort order is built while the system is offline or at least not busy and then a second index for new records is maintained while the system is serving records. The idea is that the secondary index is checked first because, being that it has the newer records, those are the ones you are more likely to need and also because the index is smaller, it is easier to check. If your record is not found in the second index then it will surely be found in the first index. Periodically when the system is offline (or not very busy), the records from the second index can be spliced into the first and then the second index can be deleted. Actually, I guess the way that works is a new index file is created by shuffling the two indexes together and then both older indexes are deleted while the table is locked and then the new index is named the same as the original. 
+Indexes can be built anytime the system is not busy. [It might be well to use this repository for building indexes](https://github.com/nextapps-de/flexsearch) because it does not use any dependencies. So we can fork it, audit it once, and from then on we know that the code has not been compromised. I imagine that a main index for a particular sort order is built while the system is offline or at least not busy and then a second index for new records is maintained while the system is running and serving records. The idea is that the secondary index is checked first because, being that it has the newer records, those are the ones you are more likely to need, and also because the index is smaller, so it's easier to check. If your record is not found in the second index then it will surely be found in the first. Periodically when the system is offline (or not very busy), the records from the second index can be spliced into the first and then the second index can be deleted. Actually, I guess the way that works is a new index file is created by shuffling the two indexes together and then both older indexes are deleted while the table is locked, and then the new index is named the same as the original. Now the table lock is released and any appends to it are once again indexed in a second index file.
 
 I have done plenty of work with available databases so why not just use MySQL or Mongo?  
 Because it is impossible to know if someone else's code has been backdoored or compromised.  
-Because I want to make something simple and without dependencies so that it's easy to audit, and because I want to learn stuff and have some fun. Moreover, there is no advice to be found on the Internet on how to build a database except to look at the source code of MySql, Mongo, and some of the others. The field is becoming centralized because people have stopped believing in there own abilities to get the job done. Well if I can do it, then anyone can, and that means you can. 
+Because I want to make something small and simple and without dependencies, so that it's easy to audit.  
+Because accounting systems for cryptocurrency are by definition decentralized.  
+So they do not need to be big and complex.  
+To the contrary, they must be as small and simple as possible.  
+Oddly, there is no advice on the Internet for how to build a database except to look at MySql or Mongo source code.  
+The field is becoming centralized because individuals have stopped believing in there own abilities to get the job done.  
+Well if I can, then anyone can, and that means you can.  
+Lets have some fun.   
 :)
 
 
