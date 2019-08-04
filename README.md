@@ -1,7 +1,7 @@
 # iotaAirgappedClientServerWallet
 This is the last piece of the puzzle in [The PrivateKeyVault family of repositories](https://github.com/johnshearing).  
 It's starting out as NodeJS code generator and database on it's way to becoming a wallet for IOTA.  
-When it matures it will be the first full blown accounting system for IOTA that machines, individuals, corporations, and goverments can use for managing their business and for cooperating with each other.  
+When it matures it will be the first full blown accounting system for IOTA that machines, individuals, corporations, and governments can use for managing their business and for cooperating with each other.  
 This work in progress is a continuation of tutorial [IOTA-Airgapped-NodeJS-Console-Wallet](https://github.com/johnshearing/IOTA-Airgapped-NodeJS-Console-Wallet).  
  
 This accounting system is being constructed using the methods shown in the following tutorial:  
@@ -60,12 +60,12 @@ Then building on top of this framework will go quickly.
 #### What's Different and Where's the Opportunity?
 Large centralized systems are very hard to secure. That's why we keep hearing about hacks at large institutions. Large means lots of vulnerabilities and complex means that these weaknesses are very hard to see. This doesn't mater so much with a large accounting system when the actual funds they track are secured by banks. But an accounting system for cryptocurrency also protects the currency from theft. It must be both accounting system and bank.  
 
-Small simple systems are inherently more secure and easier to protect because small means fewer vulnerabilities and simple means those weaknesses are easier to spot. Furthermore, distributed systems are harder to attack and typically yield less profit for the attacker because they tend to be smaller. That's a deterent which itself is a strong protection.  
+Small simple systems are inherently more secure and easier to protect because small means fewer vulnerabilities and simple means those weaknesses are easier to spot. Furthermore, distributed systems are harder to attack and typically yield less profit for the attacker because they tend to be smaller. That's a deterrent which itself is a strong protection.  
  
 Since the accounting system we are building is for a decentralized ledger, it does not have to be big or complicated as in centralized systems. Think about how [very simple creatures, like bees, when grouped together perform complex behaviours, like voting, in a very efficient manner without any centralized system to count the votes - without a centralized system to get hacked](https://youtu.be/AonV_MkUFSs). There will be many of these simple accounting systems (bees if you will) that when working together will provide the complex behaviors society needs for efficient collaboration.  
 
 * So Who's In Charge?  
-The rules and laws are in charge - the rules and laws that we set up at the local level. Referring back to bees again - each bee responds to a simple set of rules programmed by evolution. We get to define the rules that our accounting systems will follow. Everyone can make different decisions about how their particular accounting system behaves within the boundries of the law. So that means individuals are in charge.  
+The rules and laws are in charge - the rules and laws that we set up at the local level. Referring back to bees again - each bee responds to a simple set of rules programmed by evolution. We get to define the rules that our accounting systems will follow. Everyone can make different decisions about how their particular accounting system behaves within the boundaries of the law. So that means individuals are in charge.  
 
 * Smart Contracts - How Our Small Accounting Systems Interact With Each Other To Do Big Things  
 Think: smart money, Think: smart information  
@@ -73,7 +73,7 @@ Now we can embed computer software into the money and data we send which defines
 These smart contracts are executed on special distributed ledgers called blockchains.  
 
 * Keeping Control of the Process  
-We don't want our busy little accounting systems moving money, casting votes, or transceiving any kind of information without our explict knowledge and consent. This is why I have developed this [open source airgapped computer called the PrivateKeyVault](https://github.com/johnshearing/PrivateKeyVault) to run our little accounting systems. This computer ensures that no information moves in or out of the accounting system without a human gatekeeper reviewing the content and explicitly granting permission to allow the transmission. Any computer can be used but is should be airgapped and physically secured to prevent tampering.  
+We don't want our busy little accounting systems moving money, casting votes, or transceiving any kind of information without our explicit knowledge and consent. This is why I have developed this [open source airgapped computer called the PrivateKeyVault](https://github.com/johnshearing/PrivateKeyVault) to run our little accounting systems. This computer ensures that no information moves in or out of the accounting system without a human gatekeeper reviewing the content and explicitly granting permission to allow the transmission. Any computer can be used but is should be airgapped and physically secured to prevent tampering.  
 
 * So much for the overview - back to the job of building our little bees.  
 
@@ -109,7 +109,7 @@ We don't want our busy little accounting systems moving money, casting votes, or
 * Implement all the functionality available through Qubic as that comes online,  
 * Implement typical accounting functions such as AP, AR, GL, Inv ...  
 
-Since this project depends upon the IOTA JavaScript library there are unaudited dependencies. So we are trusting that the IOTA foundation as taken all the necessary steps to secure this library and all it's depencencies. In the future we can write and audit our own library to interact with the IOTA Tangle but this is not an appropriate place to start our work.  
+Since this project depends upon the IOTA JavaScript library there are unaudited dependencies. So we are trusting that the IOTA foundation as taken all the necessary steps to secure this library and all it's dependencies. In the future we can write and audit our own library to interact with the IOTA Tangle but this is not an appropriate place to start our work.  
  
 Check back often to follow the progress.  
 Feel free to make suggestions or help with the coding.  
