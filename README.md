@@ -60,9 +60,26 @@ Then building on top of this framework will go quickly.
 #### What's Different and Where's the Opportunity?
 Large centralized systems are very hard to secure. That's why we keep hearing about hacks at large institutions. Large means lots of vulnerabilities and complex means that these weaknesses are very hard to see. This doesn't mater so much with a large accounting system when the actual funds they track are secured by banks. But an accounting system for cryptocurrency also protects the currency from theft. It must be both accounting system and bank.  
 
-Small simple systems are inherently more secure and easier to protect because small means fewer vulnerabilities and simple means those weaknesses are easier to spot. Furthermore, distributed systems are harder to attack and typically yield less profit for the attacker because they tend to be smaller. That's a deterent which itself is a kind of protection.  
+Small simple systems are inherently more secure and easier to protect because small means fewer vulnerabilities and simple means those weaknesses are easier to spot. Furthermore, distributed systems are harder to attack and typically yield less profit for the attacker because they tend to be smaller. That's a deterent which itself is a strong protection.  
  
-Since the accounting system we are building is for a decentralized ledger, it does not have to be big or complicated as in centralized systems. Think about how very simple creatures, like bees, when grouped together perform complex behaviours, [like voting](https://youtu.be/AonV_MkUFSs), in a very efficient manner. There will be many of these simple accounting systems that when working together will provide the complex behaviors society needs for efficient collaboration.  
+Since the accounting system we are building is for a decentralized ledger, it does not have to be big or complicated as in centralized systems. Think about how very simple creatures, like bees, when grouped together perform complex behaviours, [like voting](https://youtu.be/AonV_MkUFSs), in a very efficient manner without any centralized system to count the votes - without a centralized system to get hacked. There will be many of these simple accounting systems (bees if you will) that when working together will provide the complex behaviors society needs for efficient collaboration.  
+
+* So Who's In Charge?  
+The rules and laws are in charge - the rules and laws that we set up at the local level. Referring back to bees again - each bee responds to a simple set of rules programmed by evolution. We get to define the rules that our accounting systems will follow. Everyone can make different decisions about how their particular accounting system behaves within the boundries of the law. So that means individuals are in charge.  
+
+* Smart Contracts - How Our Small Accounting Systems Interact With Each Other To Do Big Things  
+Think: smart money, Think: smart information  
+Now we can embed computer software into the money and data we send which defines how we want it to behave.  
+These smart contracts are executed on special distributed ledgers called blockchains.  
+
+* 
+
+
+
+
+
+
+
  
 #### Features:  
 * Database Functionality.  
