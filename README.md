@@ -73,7 +73,7 @@ Now we can embed computer software into the money and data we send which defines
 These smart contracts are executed on special distributed ledgers called blockchains.  
 
 * Keeping Control of the Process  
-We don't want our busy little accounting systems moving money, casting votes, or transceiving any kind of information without our explict knowledge and consent. This is why I have developed this [open source airgapped computer called the PrivateKeyVault](https://github.com/johnshearing/PrivateKeyVault) to run our little accounting systems. This computer ensures that no information moves in or out of the accounting system without a human gatekeeper reviewing the content and explicitly granting permission to allow the transmission.
+We don't want our busy little accounting systems moving money, casting votes, or transceiving any kind of information without our explict knowledge and consent. This is why I have developed this [open source airgapped computer called the PrivateKeyVault](https://github.com/johnshearing/PrivateKeyVault) to run our little accounting systems. This computer ensures that no information moves in or out of the accounting system without a human gatekeeper reviewing the content and explicitly granting permission to allow the transmission. Any computer can be used but is should be airgapped and physically secured to prevent tampering.  
 
 * So much for the overview - back to the job of building our little bees.  
 
