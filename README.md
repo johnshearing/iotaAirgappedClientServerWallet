@@ -69,18 +69,14 @@ The rules and laws are in charge - the rules and laws that we set up at the loca
 
 * Smart Contracts - How Our Small Accounting Systems Interact With Each Other To Do Big Things  
 Think: smart money, Think: smart information  
-Now we can embed computer software into the money and data we send which defines how we want it to behave.  
+Now we can embed computer software into the money and data we send which defines how we want them to behave.  
 These smart contracts are executed on special distributed ledgers called blockchains.  
 
-* 
+* Keeping Control of the Process  
+We don't want our busy little accounting systems moving money, casting votes, or transceiving any kind of information without our explict knowledge and consent. This is why I have developed this [airgapped computer called the PrivateKeyVault](https://github.com/johnshearing/PrivateKeyVault) to run our little accounting systems. This computer ensures that no information moves in or out of the accounting system without a human gatekeeper reviewing the content and explicitly granting permission to allow the transmission.
 
+* So much for the overview - back to the job of building our little bees.  
 
-
-
-
-
-
- 
 #### Features:  
 * Database Functionality.  
   * Table locking is used to make the application multiuser. Row and field locking should not be required because each of these small distributed systems are only supposed to support a small number of users. An unlimited amount of users and complex behavior can be supported through the interactions of these simple systems (again, like bees).  
@@ -112,7 +108,9 @@ These smart contracts are executed on special distributed ledgers called blockch
 * MAM Masked Authenticated Messaging,  
 * Implement all the functionality available through Qubic as that comes online,  
 * Implement typical accounting functions such as AP, AR, GL, Inv ...  
+
+Since this project depends upon the IOTA JavaScript library there are unaudited dependencies. So we are trusting that the IOTA foundation as taken all the necessary steps to secure this library and all it's depencencies. In the future we can write and audit our own library to interact with the IOTA Tangle but this is not an appropriate place to start our work.  
  
- Check back often to follow the progress.  
- Feel free to make suggestions or help with the coding.  
- Thanks, John
+Check back often to follow the progress.  
+Feel free to make suggestions or help with the coding.  
+Thanks, John
