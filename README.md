@@ -105,6 +105,7 @@ We don't want our busy little accounting systems moving money, casting votes, or
   * If the bundle does not make it onto the tangle within a set period of time the bundle will be promoted, reattached, or rebroadcast.  
   * And if the bundle is still not accepted after several attempts then a text message will be transmitted to the sender's phone.    
 * [Handle Multi-Signatures building upon work found here](https://www.mobilefish.com/services/cryptocurrency/iota_multisig.html),  
+* [GPG Messaging](https://www.youtube.com/watch?v=qUWWuHium30),  
 * MAM Masked Authenticated Messaging,  
 * Implement all the functionality available through Qubic as that comes online,  
 * Implement typical accounting functions such as AP, AR, GL, Inv ...  
