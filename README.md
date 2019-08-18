@@ -1,4 +1,6 @@
-# iotaAirgappedClientServerWallet
+# iotaAirgappedClientServerWallet  
+# This repository is out of date and obsolete.  
+# [See this repository instead](https://github.com/johnshearing/IOTA-Secure-Airgapped-Accounting-System)  
 This is the last piece of the puzzle in [The PrivateKeyVault family of repositories](https://github.com/johnshearing).  
 It's starting out as NodeJS code generator and database on it's way to becoming a wallet for IOTA.  
 When it matures it will be the first full blown accounting system for IOTA that machines, individuals, corporations, and governments can use for managing their business and for cooperating with each other.  
